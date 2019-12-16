@@ -6,6 +6,9 @@
   height: 80px;
   padding: 25px;
   border-bottom: 1px solid $blue;
+  &.Navbar__nav--mobile{
+    justify-content: center;
+  }
 }
 
 .Navbar__logo{
@@ -62,6 +65,46 @@
       opacity: 1;
       left: 0;
       bottom: 0;
+    }
+  }
+}
+
+//  MOBILE CLASSES
+.Navbar__mobile{
+  width: 100%;
+  height: 65px;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  border-top: 1px solid $blue;
+}
+
+.Navbar__items_mobile{
+  @extend .Navbar__items;
+  justify-content: space-around;
+}
+
+.Navbar__item_mobile{
+  display: block;
+  padding: 5px 15px;
+  color: black;
+  &.Navbar__item_mobile--main{
+    color: $blue;
+    font-weight: bold;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    &:nth-child(1){
+      &::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        background: $blue;
+        right: 0;
+        top: 0;
+      }
     }
   }
 }
