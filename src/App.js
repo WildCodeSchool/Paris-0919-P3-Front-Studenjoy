@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './styles/styles.scss';
 import Navbar from './components/Navbar';
 
 const App = () => {
@@ -8,6 +8,6 @@ const App = () => {
       <Navbar />
     </>
   );
-}
+};
 
 export default App;
