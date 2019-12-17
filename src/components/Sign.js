@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Logo from '../images/LogoStudenjoy.png';
 import './styles/Sign.scss';
 
+
 class Sign extends Component {
   state={
     signIn: true,
   }
 
+  componentDidMount(){
+    const connexionParam = this.props.match.params.connexion;
+    console.log(connexionParam)
+    connexionParam === "in" ? 
+    this.setState({
+      signIn: true,
+    })
+    :
+    this.setState({
+      signIn: false,
+    })
+  }
+
   render() {
     return (
       <>
-        <div className="Sign__home_link"><FontAwesomeIcon icon={faArrowLeft} /> Retour</div>
+        <Link to="/"><div className="Sign__home_link"><FontAwesomeIcon icon={faArrowLeft} /> Retour</div></Link>
         <div className="Sign__container">
           <h1 className="Sign__title">{this.state.signIn ? "Inscription" : "Connexion"} <img className="Sign__logo" src={Logo} alt="Studenjoy logo" /></h1>
           <form>
