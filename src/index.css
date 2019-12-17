@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Quicksand:400,700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -11,6 +14,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+li{
+  list-style-type: none;
 }
 
 code {
