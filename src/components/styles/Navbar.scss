@@ -4,7 +4,7 @@
 .Navbar__nav{
   @include flexBox(row, flex-start, center);
   height: 80px;
-  padding: 25px;
+  padding: 25px 80px;
   box-shadow: 0 0 15px $light-black;
   position: absolute;
   z-index: 1;
@@ -87,7 +87,7 @@
   position: absolute;
   bottom: 0;
   z-index: 1;
-  border-top: 1px solid $blue;
+  border-top: 1px solid $light-blue;
 }
 
 .Navbar__items_mobile{
@@ -99,6 +99,7 @@
   display: block;
   padding: 5px 15px;
   color: $black;
+  opacity: .9;
   &.Navbar__item_mobile--main{
     color: $blue;
     position: relative;
@@ -110,10 +111,13 @@
         position: absolute;
         height: 100%;
         width: 1px;
-        background: $blue;
+        background: $light-blue;
         right: 0;
         top: 0;
       }
     }
+  }
+  &.Navbar__item_mobile--active{
+    color: $blue;
   }
 }

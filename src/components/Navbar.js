@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faUser, faAirFreshener, faAnchor } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt, faUser, faGraduationCap, faComment } from '@fortawesome/free-solid-svg-icons';
 
 import './styles/Navbar.scss';
 import LogoText from '../images/LogoStudenjoyText.png';
@@ -52,15 +52,15 @@ class Navbar extends React.Component{
           <div className="Navbar__mobile">
             <ul className="Navbar__items_mobile">
               {/* User not connected */}
-              {/* <li className="Navbar__item_mobile Navbar__item_mobile--main">Connection</li>
-              <li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li> */}
+              <li className="Navbar__item_mobile Navbar__item_mobile--main">Connection</li>
+              <li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li>
               {/*  End User not connected */}
 
               {/*  User connected */}
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faCoffee} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faAnchor} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faAirFreshener} /></li>
+              {/* <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faGraduationCap} /></li>
+              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faFileAlt} /></li>
+              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faComment} /></li>
+              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li> */}
               {/*  End User connected */}
             </ul>
           </div>
