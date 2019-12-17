@@ -36,7 +36,7 @@ class Navbar extends React.Component{
           {!this.state.mobile &&
             <ul className="Navbar__items">
               {/* User not connected */}
-              <li className="Navbar__button">Connection</li>
+              <li className="Navbar__button">Connexion</li>
               <li className="Navbar__button Navbar__button--primary">Inscription</li>
               {/* End user not connected */}
 
