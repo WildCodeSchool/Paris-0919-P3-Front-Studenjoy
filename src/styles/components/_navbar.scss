@@ -90,6 +90,17 @@
 .Navbar__items_mobile {
   @extend .Navbar__items;
   justify-content: space-around;
+  & a:nth-child(1) {
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute; 
+      right: -30px;
+      height: 100%;
+      width: 1px;
+      background: $light-blue;
+    }
+  }
 }
 
 .Navbar__item_mobile {
@@ -102,19 +113,9 @@
     position: relative;
     width: 100%;
     text-align: center;
-    &:nth-child(1) {
-      &::before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        width: 1px;
-        background: $light-blue;
-        right: 0;
-        top: 0;
-      }
-    }
   }
   &.Navbar__item_mobile--active {
     color: $blue;
   }
 }
+
