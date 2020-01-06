@@ -1,0 +1,43 @@
+
+  .Container{
+    @include flexBox(column, center, center);
+    border-top: 1px solid $blue;
+    border-bottom: 1px solid $blue;
+    background: #009cc530;
+    padding: 40px 20px;
+    width: 100%;
+  }
+  
+  
+  .searchForm{
+    @include flexBox(row, center, center);
+  }
+  
+  .Search__Form{
+    font-size: 1rem;
+    border: 1px solid #009cc5;
+    border-right: 0px;
+    padding: 1.2rem;
+    color: $blue;
+    min-width: 300px;
+    box-shadow: 0 0 2px #009cc530;
+    &:nth-child(1){
+      border-radius: 3px 0 0 3px;
+    }
+  }
+  
+  .submitBtn{
+    background: $orange;
+    border-radius: 0 3px 3px 0;
+    padding: 1.2rem 1.6rem;
+    color: white;
+    transition: opacity .3s;
+    &:hover{
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+  
+  input:focus{
+    filter: drop-shadow(0 0 1px #00b0de);
+  }
