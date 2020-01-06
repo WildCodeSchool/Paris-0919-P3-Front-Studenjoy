@@ -1,9 +1,6 @@
 
   .Container{
     @include flexBox(column, center, center);
-    border-top: 1px solid $blue;
-    border-bottom: 1px solid $blue;
-    background: #009cc530;
     padding: 40px 20px;
     width: 100%;
   }
