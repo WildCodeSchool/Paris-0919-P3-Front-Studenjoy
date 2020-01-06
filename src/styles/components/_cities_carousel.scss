@@ -1,0 +1,53 @@
+.Cities__container{
+  margin-top: 100px;
+  @include flexBox(row, center, center);
+  flex-wrap: wrap;
+}
+
+.City__card{
+  position: relative;
+  margin: 25px;
+  border: 1px solid $light-blue;
+  border-radius: 3px;
+  width: 300px;
+  transition: transform .3s;
+  &:hover{
+    cursor: pointer;
+    transform: translate(-10px, -10px);
+  }
+  img{
+    height: 240px;
+    object-fit: cover;
+  }
+}
+
+.City__card_title{
+  white-space: nowrap;
+  padding: 15px;
+  top: 25px;
+  left: 25px;
+  color: $orange;
+}
+
+.City__card_img{
+  max-width: 100%;
+  filter: grayscale(20%);
+}
+
+.City__card_icon{
+  margin-right: 10px;
+}
+
+.City__card_footer{
+  @include flexBox(row, flex-start, center);
+  padding: 0 0 0 15px;
+  color: $blue;
+}
+
+.City__card_number{
+  padding: 15px;
+  margin-left: auto;
+}
+
+
+
