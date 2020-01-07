@@ -67,7 +67,7 @@ const fakeCities = [
 
 const CitiesCarousel = () => {
   return (
-    <section>
+    <section class="Cities" id="Cities">
       <Slider {...sliderSettings} className="Cities__container">
           {fakeCities.map(city => 
             <CityItem city={city}/>

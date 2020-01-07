@@ -47,3 +47,35 @@ input {
 input::placeholder {
   color: #009cc5;
 }
+
+// Override react slick CSS 
+
+.slick-arrow.slick-prev{
+  left: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.slick-arrow.slick-next{
+  right: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+section#Cities.Cities{
+  .Cities__container{
+    .slick-arrow{
+      &::before{
+        display: none;
+      }
+    }
+  }
+}
