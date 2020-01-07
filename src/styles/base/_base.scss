@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 100px 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -76,6 +76,14 @@ section#Cities.Cities{
       &::before{
         display: none;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .slick-arrow.slick-prev, .slick-arrow.slick-next{
+    &::before{
+      display: none;
     }
   }
 }

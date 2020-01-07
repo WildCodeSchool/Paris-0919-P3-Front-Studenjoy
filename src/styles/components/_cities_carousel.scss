@@ -7,6 +7,7 @@
   margin: 25px;
   border: 1px solid $light-blue;
   border-radius: 3px;
+  min-width: 220px;
   transition: transform .3s;
   &:hover{
     cursor: pointer;
