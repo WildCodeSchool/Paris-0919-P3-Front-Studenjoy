@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 100px 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -46,4 +46,44 @@ input {
 
 input::placeholder {
   color: #009cc5;
+}
+
+// Override react slick CSS 
+
+.slick-arrow.slick-prev{
+  left: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.slick-arrow.slick-next{
+  right: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+section#Cities.Cities{
+  .Cities__container{
+    .slick-arrow{
+      &::before{
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .slick-arrow.slick-prev, .slick-arrow.slick-next{
+    &::before{
+      display: none;
+    }
+  }
 }
