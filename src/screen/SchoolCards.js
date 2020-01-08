@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import CardItem from "./CardItem";
 import "./SchoolCards.css";
@@ -75,6 +76,9 @@ class SchoolCards extends Component {
         <h1 className="SchoolCards__title">
           Ecoles Correspondant à ma recherche
         </h1>
+        <Link to="/">
+          <button className="SchoolCards__Home__button">Home</button>
+        </Link>
         {fakeCities.map(city => {
           if (city.nbSchool === parseInt(this.props.match.params.id))
             return <CardItem city={city} />;

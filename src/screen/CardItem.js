@@ -20,14 +20,33 @@ const CardItem = props => {
           )}
           <div className="School__card_footer">
             <p>Ecole disponible </p>
-            <p>pays : {props.city.pays}</p>
-            <p>Nombre de places disponibles {props.city.places}</p>
-            <p>Spécialité(s): {props.city.specialities} </p>
+            <p>
+              pays : <span style={{ color: "#eb6645" }}>{props.city.pays}</span>
+            </p>
+            <p>
+              Nombre de places disponibles :{" "}
+              <span style={{ color: "#eb6645" }}>{props.city.places}</span>
+            </p>
+            <p>
+              Spécialité(s):{" "}
+              <span style={{ color: "#eb6645" }}>
+                {props.city.specialities}
+              </span>{" "}
+            </p>
             <p>Cout de la candidature avant admissibilité :</p>
-            <p>Via Studenjoy : {props.city.studenjoy}</p>
-            <p>Via la procédure classique : {props.city.normal}</p>
+            <p>
+              Via Studenjoy :{" "}
+              <span style={{ color: "#eb6645" }}>{props.city.studenjoy}</span>
+            </p>
+            <p>
+              Via la procédure classique :{" "}
+              <span style={{ color: "#eb6645" }}>{props.city.normal}</span>
+            </p>
             <br />
-            <p>Coût de la formation: {props.city.fees}</p>
+            <p>
+              Coût de la formation:{" "}
+              <span style={{ color: "#eb6645" }}>{props.city.fees}</span>
+            </p>
             <p className="School__card_number">
               <FontAwesomeIcon className="City__card_icon" icon={faSchool} />{" "}
               {props.city.nbSchool}
