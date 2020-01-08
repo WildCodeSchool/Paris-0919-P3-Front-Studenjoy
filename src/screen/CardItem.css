@@ -1,0 +1,24 @@
+.School__card {
+  margin: 80px 40px 40px 70px;
+  border: 1px solid #009cc5;
+  width: 20%;
+}
+
+.School__card_title {
+  white-space: nowrap;
+  padding: 15px;
+  top: 25px;
+  left: 25px;
+  color: orange;
+}
+
+.City__card_img {
+  max-width: 100%;
+  filter: grayscale(20%);
+}
+
+.School__card_footer {
+  display: flex;
+  flex-direction: column;
+  color: #009cc5;
+}
