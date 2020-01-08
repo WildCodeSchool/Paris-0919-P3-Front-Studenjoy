@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSchool } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "./CardItem.css";
+// import "./CardItem.css";
 
 const CardItem = props => {
   return (

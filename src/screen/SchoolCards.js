@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import CardItem from "./CardItem";
-import "./SchoolCards.css";
+// import "./SchoolCards.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSchool } from "@fortawesome/free-solid-svg-icons";

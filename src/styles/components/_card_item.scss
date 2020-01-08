@@ -1,6 +1,6 @@
 .School__card {
   margin: 80px 40px 40px 70px;
-  border: 1px solid #009cc5;
+  border: 1px solid $blue;
   width: 25%;
 }
 
@@ -9,7 +9,7 @@
   padding: 15px;
   top: 25px;
   left: 25px;
-  color: orange;
+  color: $orange;
 }
 
 .City__card_img {
@@ -20,5 +20,5 @@
 .School__card_footer {
   display: flex;
   flex-direction: column;
-  color: #009cc5;
+  color: $blue;
 }
