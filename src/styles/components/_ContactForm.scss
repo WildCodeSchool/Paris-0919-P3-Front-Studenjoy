@@ -1,5 +1,6 @@
-
-
+form{
+    margin-top:5%;
+}
 .contact h3 {
     display: block;
     font-size: 30px;
@@ -42,6 +43,15 @@
     margin: 50px;
 }
 
+textarea{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px 70px;
+    margin: 50px
+
+}
 .ContactForm_title {
     color: $blue;
     margin-bottom: 90px;
