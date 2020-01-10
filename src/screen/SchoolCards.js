@@ -73,12 +73,12 @@ class SchoolCards extends Component {
   render() {
     return (
       <div>
-        <h1 className="SchoolCards__title">
+        <div className="SchoolCards__title">
           Ecoles Correspondant à ma recherche
-        </h1>
-        <Link to="/">
+        </div>
+        {/* <Link to="/">
           <button className="SchoolCards__Home__button">Home</button>
-        </Link>
+        </Link> */}
         {fakeCities.map(city => {
           if (city.nbSchool === parseInt(this.props.match.params.id))
             return <CardItem city={city} />;

@@ -1,7 +1,18 @@
+$break-phone: 768px;
+$break-tablet: 1024px;
+
 .School__card {
   margin: 80px 40px 40px 70px;
-  border: 1px solid $blue;
   width: 25%;
+  border: 1px solid $blue;
+  @media screen and (max-width: $break-phone) {
+    width: 80%;
+    margin: auto;
+  }
+  // @media screen and (max-width: $break-tablet) {
+  //   width: 30%;
+  //   margin: auto;
+  // }
 }
 
 .School__card_title {
