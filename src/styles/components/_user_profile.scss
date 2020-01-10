@@ -30,6 +30,22 @@
   }
 }
 
+.UserProfile__button{
+  svg{
+    margin-right: $s-size;
+  }
+  padding: $s-size;
+  background: $blue;
+  border-radius: 3px;
+  color: white;
+  background: $orange;
+  transition: opacity .3s;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
 .UserProfile__title{
   font-size: 5rem;
 }
@@ -61,19 +77,44 @@
   }
   input{
     background: white;
-    &:hover{
-      cursor: not-allowed;
-    }
   }
 }
 
-.UserProfile__doc{
+.UserProfile__docs_container{
+  @include flexBox(column, center, center);
   color: $blue;
-  @include flexBox(row, flex-start, center);
-  span{
-    color: $orange;
-    margin-right: $s-size;
+}
+
+.UserProfile__doc_upload{
+  border: 2px dashed $blue;
+  border-radius: 3px;
+  margin-top: $l-size;
+  width: 500px;
+  height: 300px;
+  @include flexBox(row,center,center);
+  text-decoration: underline;
+  transition: text-decoration .5s;
+  &:hover{
+    cursor: pointer;
+    text-decoration: none;
   }
+}
+
+.UserProfile__doc_type{
+  color: $orange;
+  text-decoration: underline;
+}
+
+.UserProfile__update_bar{
+  position: fixed;
+  width: 100%;
+  bottom: 0; 
+  z-index: 2;
+  background: white;
+  color: $blue;
+  padding: $s-size;
+  border-top: 1px solid $blue;
+  @include flexBox(row, flex-end, center);
 }
 
 @media screen and (max-width: 650px){

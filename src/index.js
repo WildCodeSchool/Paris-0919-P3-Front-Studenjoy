@@ -15,7 +15,8 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/sign/:connexion" component={Sign} />
-      <Route path="/user_profile" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
+      <Route exact path="/user_profile/:id" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
+      <Route exact path="/user_profile/:id/:edit" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
       <Route path="/schools/:city" component={SchoolsList} />
     </Switch>
   </BrowserRouter>,
