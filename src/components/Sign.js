@@ -14,7 +14,6 @@ class Sign extends Component {
 
   componentDidMount(){
     const connexionParam = this.props.match.params.connexion;
-    console.log(connexionParam)
     connexionParam === "in" ? 
     this.setState({
       signIn: true,

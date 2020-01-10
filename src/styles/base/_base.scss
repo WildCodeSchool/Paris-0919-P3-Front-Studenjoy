@@ -26,6 +26,11 @@ a{
   text-decoration: none;
 }
 
+a:focus{
+  outline: 0;
+  border: none;
+}
+
 li{
   list-style-type: none;
 }
