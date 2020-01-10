@@ -78,7 +78,13 @@ class SchoolsList extends Component {
   render() {
     return (
       <div className="Schools__container">
-        {this.state.schools && this.state.schools.map(school => school.name)}
+        {this.state.schools && this.state.schools.map(school => 
+        <>
+          <h3>{school.name}</h3>
+          <p>Prix de la formation : {school.fees}</p>
+          <p>Nb de places : {school.places}</p>
+        </>
+        )}
       </div>
     )
   }
