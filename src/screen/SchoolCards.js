@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-const fakeSchools = [
+import CardItem from "./CardItem";
+// import "./SchoolCards.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSchool } from "@fortawesome/free-solid-svg-icons";
+
+const fakeCities = [
   {
-    name: "School 1",
-    city: "Paris",
+    name: "Paris",
+    nbSchool: 15,
     pays: "France",
     places: 10,
     specialities: "Management de l'innovation, Management Technologique",
@@ -14,8 +21,8 @@ const fakeSchools = [
       "https://d39gusjpdm7p1o.cloudfront.net/data/layout_grouping/static_page_step/20784_20770_1.800w.jpg?ver=1575040255"
   },
   {
-    name: "School 2",
-    city: "Orleans",
+    name: "Orleans",
+    nbSchool: 2,
     pays: "France",
     places: 10,
     specialities: "Commerce international",
@@ -25,8 +32,8 @@ const fakeSchools = [
     img: "https://www.umanis.com/wp-content/uploads/2016/12/orleans-agence.png"
   },
   {
-    name: "School 3",
-    city: "Marseille",
+    name: "Marseille",
+    nbSchool: 5,
     pays: "France",
     places: 10,
     specialities: "Management de projet secteur aeronotique",
@@ -37,8 +44,8 @@ const fakeSchools = [
       "https://madeinmarseille.net/actualites-marseille/2017/11/date-cle-histoire-marseille.jpg"
   },
   {
-    name: "Shool 4",
-    city: "Bordeaux",
+    name: "Bordeaux",
+    nbSchool: 6,
     pays: "France",
     places: 10,
     specialities: "Droits des entreprises et gestion du patrimoine",
@@ -49,8 +56,8 @@ const fakeSchools = [
       "https://blog.camping-saint-emilion.com/wp-content/uploads/2019/05/bordeaux2.jpg"
   },
   {
-    name: "School 5",
-    city: "Lille",
+    name: "Lille",
+    nbSchool: 8,
     pays: "France",
     places: 10,
     specialities: "Mecanique des fluides thermodynamique",
@@ -62,32 +69,23 @@ const fakeSchools = [
   }
 ];
 
-
-class SchoolsList extends Component {
-  state = {
-    schools: []
-  };
-
-  componentDidMount(){
-    const city = this.props.match.params.city;
-    this.setState({
-      schools: fakeSchools.filter(school => school.city === city)
-    })
-  }
-
+class SchoolCards extends Component {
   render() {
     return (
-      <div className="Schools__container">
-        {this.state.schools && this.state.schools.map(school => 
-        <>
-          <h3>{school.name}</h3>
-          <p>Prix de la formation : {school.fees}</p>
-          <p>Nb de places : {school.places}</p>
-        </>
-        )}
+      <div>
+        <div className="SchoolCards__title">
+          Ecoles Correspondant à ma recherche
+        </div>
+        {/* <Link to="/">
+          <button className="SchoolCards__Home__button">Home</button>
+        </Link> */}
+        {fakeCities.map(city => {
+          if (city.nbSchool === parseInt(this.props.match.params.id))
+            return <CardItem city={city} />;
+        })}
       </div>
-    )
+    );
   }
 }
 
-export default SchoolsList;
+export default SchoolCards;

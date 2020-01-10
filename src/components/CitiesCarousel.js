@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import CityItem from './CityItem';
+import CityItem from "./CityItem";
 
 const sliderSettings = {
   dots: true,
@@ -41,6 +42,7 @@ const sliderSettings = {
 
 const fakeCities = [
   {
+
     id: 1,
     name: 'Paris',
     nbSchool : 15,
@@ -72,16 +74,19 @@ const fakeCities = [
   },
 ]
 
+
 const CitiesCarousel = () => {
   return (
     <section className="Cities" id="Cities">
       <Slider {...sliderSettings} className="Cities__container">
+
           {fakeCities.map(city => 
             <Link to={`/schools/${city.name.toString()}`}><CityItem key={city.id} city={city}/></Link>
           )}
+
       </Slider>
     </section>
-  )
-}
+  );
+};
 
-export default CitiesCarousel
+export default CitiesCarousel;

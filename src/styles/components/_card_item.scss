@@ -1,0 +1,35 @@
+$break-phone: 768px;
+$break-tablet: 1024px;
+
+.School__card {
+  margin: 80px 40px 40px 70px;
+  width: 25%;
+  border: 1px solid $blue;
+  @media screen and (max-width: $break-phone) {
+    width: 80%;
+    margin: auto;
+  }
+  // @media screen and (max-width: $break-tablet) {
+  //   width: 30%;
+  //   margin: auto;
+  // }
+}
+
+.School__card_title {
+  white-space: nowrap;
+  padding: 15px;
+  top: 25px;
+  left: 25px;
+  color: $orange;
+}
+
+.City__card_img {
+  max-width: 100%;
+  filter: grayscale(20%);
+}
+
+.School__card_footer {
+  display: flex;
+  flex-direction: column;
+  color: $blue;
+}
