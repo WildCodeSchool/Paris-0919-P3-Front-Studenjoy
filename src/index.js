@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -17,8 +18,7 @@ ReactDOM.render(
       <Route path="/user_profile" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
       <Route path="/schools/:city" component={SchoolsList} />
     </Switch>
-  </BrowserRouter>
+  </BrowserRouter>,
 
-, document.getElementById('root'));
-
-
+  document.getElementById("root")
+);
