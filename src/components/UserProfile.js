@@ -76,7 +76,7 @@ class UserProfile extends React.Component {
             </div>
           </div>
           {this.state.editing && <div className="UserProfile__update_bar">
-            <div className="UserProfile__button"><FontAwesomeIcon icon={faEdit} />Mettre à jour</div>
+            <div className="UserProfile__button"><FontAwesomeIcon icon={faEdit} />Mettre à jour mon profil</div>
           </div>}
         </div>
       </div>
