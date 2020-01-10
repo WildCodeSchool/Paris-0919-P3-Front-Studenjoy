@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../images/LogoStudenjoy.png';
 
+import Navbar from './Navbar';
+
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -35,6 +37,8 @@ class UserProfile extends React.Component {
 
   render() {
     return (
+      <>
+      <Navbar />
       <div className="UserProfile__container">
         <div className="UserProfile__header">
           <div className="UserProfile__picture"><img src={Logo} alt="profile"/></div>
@@ -80,6 +84,7 @@ class UserProfile extends React.Component {
           </div>}
         </div>
       </div>
+      </>
     )
   }
 }
