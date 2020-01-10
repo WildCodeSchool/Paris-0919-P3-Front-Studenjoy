@@ -7,25 +7,23 @@ import { Link } from "react-router-dom";
 const CityItem = props => {
   return (
     <div>
-      <Link to={`/schoolcards/${props.city.nbSchool}`}>
-        <div className="City__card">
-          <h3 class="City__card_title">Etudier à {props.city.name}</h3>
-          {props.city.img && (
-            <img
-              className="City__card_img"
-              src={props.city.img}
-              alt={props.city.name}
-            />
-          )}
-          <div className="City__card_footer">
-            <p>Ecoles disponibles </p>
-            <p className="City__card_number">
-              <FontAwesomeIcon className="City__card_icon" icon={faSchool} />{" "}
-              {props.city.nbSchool}
-            </p>
-          </div>
+      <div className="City__card">
+        <h3 class="City__card_title">Etudier à {props.city.name}</h3>
+        {props.city.img && (
+          <img
+            className="City__card_img"
+            src={props.city.img}
+            alt={props.city.name}
+          />
+        )}
+        <div className="City__card_footer">
+          <p>Ecoles disponibles </p>
+          <p className="City__card_number">
+            <FontAwesomeIcon className="City__card_icon" icon={faSchool} />{" "}
+            {props.city.nbSchool}
+          </p>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

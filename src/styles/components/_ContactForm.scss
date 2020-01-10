@@ -1,74 +1,54 @@
-.contact h3 {
-    display: block;
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    color: black;
-}
-
-.contact h4 {
-    margin: 5px 0 15px;
-    display: block;
-    font-size: 13px;
-    font-weight: 400;
-    color: black;
-}
-
-.contact textarea {
+.ContactForm__contact textarea {
     height: 100px;
     max-width: 100%;
     resize: none;
 }
 
-.contact button {
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    background: #EB6645;
-    color: #FFF;
-    margin: 0 0 5px;
-    padding: 10px;
-    font-size: 15px;
-}
-
-.InputForm {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
+.ContactForm__input_form {
+    @include flexBox(column, center, center);
     padding: -2px 70px;
     margin: 60px;
-    input{margin: 5px;}
+    input{
+        margin: 5px;
+        width: 1200px;
+    }
 }
 
-.ContactForm_title {
+.ContactForm__title {
     color: $blue;
-    margin-bottom: 30px;
+    margin: 30px;
     text-align: center;
-
 }
 
-.title {
-    margin: 50px;
+.ContactForm__header{
+    margin: 80px 50px 50px 50px;
 }
 
-.button {
+.ContactForm__button {
     padding: 10px 20px;
-    border: 1px solid #009cc5;
-    color: #009cc5;
+    background: $orange;
+    color: white;
     transition: opacity 0.3s;
     margin: 10px;
-    margin-left: 45%;
     border-radius: 3px;
-    width: 90px;
     text-align: center;
-    display: flex;
+    font-weight: bold;
+    &:hover{
+        cursor: pointer;
+        opacity: .9;
+    }
 }
 
 @media screen and (max-width : 500px) {
-    .InputForm {
-        display:block;
-        clear:both;
+    .ContactForm__input_form {
+        input{
+            width: max-content;
+        }
     }
-    
+
+    .ContactForm__button{
+        border: 1px solid $orange;
+        background: white;
+        color: $orange;
+    }
 }

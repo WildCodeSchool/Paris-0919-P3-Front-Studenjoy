@@ -79,11 +79,9 @@ const CitiesCarousel = () => {
   return (
     <section className="Cities" id="Cities">
       <Slider {...sliderSettings} className="Cities__container">
-
           {fakeCities.map(city => 
-            <Link to={`/schools/${city.name.toString()}`}><CityItem key={city.id} city={city}/></Link>
+            <Link to={`/schools/${city.name}`}><CityItem key={city.id} city={city}/></Link>
           )}
-
       </Slider>
     </section>
   );
