@@ -6,6 +6,7 @@ import App from './App';
 import Sign from './components/Sign';
 import UserProfile from './components/UserProfile';
 import SchoolCards from './components/SchoolCards';
+import SearchResults from './components/SearchResults';
 
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Route exact path="/user_profile/:id" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
       <Route exact path="/user_profile/:id/:edit" component={UserProfile} /> {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
       <Route path="/schools/:city" component={SchoolCards} />
+      <Route path="/results" component={SearchResults} />
     </Switch>
   </BrowserRouter>,
 
