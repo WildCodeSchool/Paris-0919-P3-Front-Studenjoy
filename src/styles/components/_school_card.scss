@@ -1,0 +1,24 @@
+$break-phone: 768px;
+$break-tablet: 1024px;
+
+.SchoolCards__title {
+  margin: 10rem 0 5rem 5rem;
+  color: $blue;
+  font-size: xx-large;
+  font-weight: bolder;
+  @media screen and (max-width: $break-phone) {
+    font-size: large;
+  }
+}
+
+// .SchoolCards__Home__button {
+//   margin: 50px 0 0 70px;
+//   border: 1px solid $blue;
+//   cursor: pointer;
+//   border-radius: 10px;
+//   width: 10vw;
+//   height: 5vh;
+//   background-color: white;
+//   font-weight: bolder;
+//   color: $blue;
+// }

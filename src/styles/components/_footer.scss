@@ -1,0 +1,50 @@
+.Footer__container{
+    @include flexBox(row,space-around,center);
+    padding: 80px 0;
+    background-color: $light-blue;
+    img{
+        max-height: 40px;
+    }
+}
+
+.Footer__col{
+    @include flexBox(column, flex-start, flex-start);
+    margin: 25px;
+}
+
+.Footer__line{
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.Footer__icons{
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 0;
+    svg{
+        font-size: $l-size;
+        margin: 0;
+        margin-right: 5px;
+        color: #009cc5;;
+        &:hover{
+            color: $orange;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .Footer__container{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 0;
+    }
+
+    .Footer__line{
+        white-space: break-spaces;
+        max-width: 250px;
+    }
+}

@@ -1,0 +1,137 @@
+.UserProfile__container{
+  margin-top: 80px;
+}
+
+.UserProfile__header{
+  @include flexBox(row, center, center);
+  padding: 25px 80px;
+  color: $orange;
+  background: $light-blue;
+}
+
+.UserProfile__picture{
+  padding: 15px;
+  border: 2px solid $blue;
+  border-radius: 3px;
+  img{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+  }
+}
+
+.UserProfile__header--main_infos{
+  @include flexBox(column, flex-start, flex-start);
+  color: $orange;
+  align-self: center;
+  margin: 0 35px;
+  span{
+    color: $black;
+  }
+}
+
+.UserProfile__button{
+  svg{
+    margin-right: $s-size;
+  }
+  padding: $s-size;
+  background: $blue;
+  border-radius: 3px;
+  color: white;
+  background: $orange;
+  transition: opacity .3s;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
+.UserProfile__title{
+  font-size: 5rem;
+}
+
+.UserProfile__subtitle{
+  font-size: 3rem;
+  margin: 35px;
+  color: $blue;
+  width: 100%;
+  text-align: center;
+}
+
+.UserProfile__body{
+  @include flexBox(row, center, center);  
+  flex-wrap: wrap;
+  margin: 50px 80px;
+}
+
+.UserProfile__info{
+  position: relative;
+  width: max-content;
+  margin: 30px;
+  span{
+    position: absolute;
+    color: $orange;
+    top: -25px;
+    left: 0px;
+    font-size: 15px;
+  }
+  input{
+    background: white;
+  }
+}
+
+.UserProfile__docs_container{
+  @include flexBox(column, center, center);
+  color: $blue;
+}
+
+.UserProfile__doc_upload{
+  border: 2px dashed $blue;
+  border-radius: 3px;
+  margin-top: $l-size;
+  width: 500px;
+  height: 300px;
+  @include flexBox(row,center,center);
+  text-decoration: underline;
+  transition: text-decoration .5s;
+  &:hover{
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.UserProfile__doc_type{
+  color: $orange;
+  text-decoration: underline;
+}
+
+.UserProfile__update_bar{
+  position: fixed;
+  width: 100%;
+  bottom: 0; 
+  z-index: 2;
+  background: white;
+  color: $blue;
+  padding: $s-size;
+  border-top: 1px solid $blue;
+  @include flexBox(row, flex-end, center);
+}
+
+@media screen and (max-width: 650px){
+  .UserProfile__header{
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .UserProfile__header--main_infos{
+    text-align: center;
+    align-items: center;
+  }
+
+  .UserProfile__picture{
+    display: none;
+  }
+
+
+}

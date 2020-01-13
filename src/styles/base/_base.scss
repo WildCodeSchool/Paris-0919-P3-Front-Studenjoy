@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Quicksand:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-size: $m-size;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:focus{
+  outline: 0;
+  border: none;
+}
+
+li{
+  list-style-type: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  border: 1px solid #009cc5; /* $blue */
+  border-radius: 3px;
+  padding: $m-size;
+  color: #009cc5;
+  min-width: 300px;
+  box-shadow: 0 0 2px #009cc530;
+}
+
+input::placeholder {
+  color: #009cc5;
+}
+
+// Override react slick CSS 
+
+.slick-arrow.slick-prev{
+  left: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.slick-arrow.slick-next{
+  right: 20px;
+  z-index: 2;
+  &::before{
+    opacity: 1;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+section#Cities.Cities{
+  .Cities__container{
+    .slick-arrow{
+      &::before{
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .slick-arrow.slick-prev, .slick-arrow.slick-next{
+    &::before{
+      display: none;
+    }
+  }
+
+  body{
+    margin-bottom: 65px;
+  }
+}
