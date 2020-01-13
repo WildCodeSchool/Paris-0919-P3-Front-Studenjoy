@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
+import Navbar from './Navbar';
 import CardItem from "./CardItem";
-// import "./SchoolCards.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSchool } from "@fortawesome/free-solid-svg-icons";
 
 const fakeCities = [
   {
     name: "Paris",
+    schoolName: "School 1",
     nbSchool: 15,
     pays: "France",
     places: 10,
@@ -22,6 +19,7 @@ const fakeCities = [
   },
   {
     name: "Orleans",
+    schoolName: "School 2",
     nbSchool: 2,
     pays: "France",
     places: 10,
@@ -33,6 +31,7 @@ const fakeCities = [
   },
   {
     name: "Marseille",
+    schoolName: "School 3",
     nbSchool: 5,
     pays: "France",
     places: 10,
@@ -45,6 +44,7 @@ const fakeCities = [
   },
   {
     name: "Bordeaux",
+    schoolName: "School 4",
     nbSchool: 6,
     pays: "France",
     places: 10,
@@ -57,10 +57,24 @@ const fakeCities = [
   },
   {
     name: "Lille",
+    schoolName: "School 5",
     nbSchool: 8,
     pays: "France",
     places: 10,
     specialities: "Mecanique des fluides thermodynamique",
+    studenjoy: "0€",
+    normal: "75€",
+    fees: "12 500€",
+    img:
+      "https://www.voyageway.com/wp-content/uploads/2019/05/city-pass-lille-740x475.jpg"
+  },
+  {
+    name: "Lille",
+    schoolName: "School 6",
+    nbSchool: 8,
+    pays: "France",
+    places: 10,
+    specialities: "Sisi la famille",
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -72,18 +86,20 @@ const fakeCities = [
 class SchoolCards extends Component {
   render() {
     return (
-      <div>
+      <>
+        <Navbar />
         <div className="SchoolCards__title">
-          Ecoles Correspondant à ma recherche
+          Ecoles disponibles à {this.props.match.params.city}
         </div>
-        {/* <Link to="/">
-          <button className="SchoolCards__Home__button">Home</button>
-        </Link> */}
-        {fakeCities.map(city => {
-          if (city.nbSchool === parseInt(this.props.match.params.id))
-            return <CardItem city={city} />;
-        })}
-      </div>
+        <div className="SchoolCards__container">
+          {fakeCities.map(city => {
+            if (city.name === this.props.match.params.city)
+              return (
+                  <CardItem city={city} />
+              )
+          })}
+        </div>
+      </>
     );
   }
 }

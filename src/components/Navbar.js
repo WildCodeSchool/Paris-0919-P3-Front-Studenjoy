@@ -57,7 +57,7 @@ class Navbar extends React.Component {
               {/* User connected */}
               <li className="Navbar__item">Item</li>
               <li className="Navbar__item">Demandes</li>
-              <Link to="/user_profile/1" className="Navbar__item">Profil</Link> {/* CHANGE USER ID HERE*/}
+              <Link to="/user_profile/1" className="Navbar__item">Profil</Link> {/* CHANGE USER ID HERE */}
               {/* End User connected */}
             </ul>
           )}
