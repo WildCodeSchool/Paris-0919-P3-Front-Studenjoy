@@ -2,13 +2,12 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSchool } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 const CityItem = props => {
   return (
     <div>
       <div className="City__card">
-        <h3 class="City__card_title">Etudier à {props.city.name}</h3>
+        <h3 className="City__card_title">Etudier à {props.city.name}</h3>
         {props.city.img && (
           <img
             className="City__card_img"

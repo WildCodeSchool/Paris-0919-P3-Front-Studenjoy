@@ -50,14 +50,14 @@ class Navbar extends React.Component {
           {!this.state.mobile && (
             <ul className="Navbar__items">
               {/* User not connected */}
-              <Link to='/sign/up'><li className="Navbar__button">Connexion</li></Link>
-              <Link to='/sign/in'><li className="Navbar__button Navbar__button--primary">Inscription</li></Link>
+              {/* <Link to='/sign/up'><li className="Navbar__button">Connexion</li></Link>
+              <Link to='/sign/in'><li className="Navbar__button Navbar__button--primary">Inscription</li></Link> */}
               {/* End user not connected */}
 
               {/* User connected */}
-              {/* <li className="Navbar__item">Item</li>
+              <li className="Navbar__item">Item</li>
               <li className="Navbar__item">Demandes</li>
-              <Link to="/user_profile/1" className="Navbar__item">Profil</Link> CHANGE USER ID HERE */}
+              <Link to="/user_profile/1" className="Navbar__item">Profil</Link> {/* CHANGE USER ID HERE */}
               {/* End User connected */}
             </ul>
           )}
@@ -66,15 +66,15 @@ class Navbar extends React.Component {
           <div className="Navbar__mobile">
             <ul className="Navbar__items_mobile">
               {/* User not connected */}
-              <Link to='/sign/up'><li className="Navbar__item_mobile Navbar__item_mobile--main">Connexion</li></Link>
-              <Link to='/sign/in'><li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li></Link>
+              {/* <Link to='/sign/up'><li className="Navbar__item_mobile Navbar__item_mobile--main">Connexion</li></Link>
+              <Link to='/sign/in'><li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li></Link> */}
               {/*  End User not connected */}
 
               {/*  User connected */}
-              {/* <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faGraduationCap} /></li>
+              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faGraduationCap} /></li>
               <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faFileAlt} /></li>
               <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faComment} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li> */}
+              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li>
               {/*  End User connected */}
             </ul>
           </div>
