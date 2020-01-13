@@ -1,21 +1,46 @@
-.footer{
-    @include flexBox(row,center,center);
+.Footer__container{
+    @include flexBox(row,space-around,center);
+    padding: 80px 0;
+    background-color: $light-blue;
     img{
         max-height: 40px;
     }
-    padding: 15px;
-    margin: 30px;
-    background-color: $light-blue;
-    height: 300px;
-    width: 1000px;
-    font-family: "Quicksand";
-    text-align: center;
 }
 
+.Footer__col{
+    @include flexBox(column, flex-start, flex-start);
+    margin: 25px;
+    white-space: nowrap;
+}
 
+.Footer__line{
+    font-weight: bold;
+    word-break: break-all;
+}
 
-.icon{
-    font-family: "Quicksand";
-    margin: 20px;
+.Footer__icons{
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 0;
+    svg{
+        font-size: $l-size;
+        margin: 0;
+        margin-right: 5px;
+    }
+}
 
+@media screen and (max-width: 500px){
+    .Footer__container{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 0;
+    }
+
+    .Footer__line{
+        white-space: break-spaces;
+        max-width: 250px;
+    }
 }
