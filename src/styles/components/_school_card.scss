@@ -14,4 +14,5 @@ $break-tablet: 1024px;
 .SchoolCards__container{
   @include flexBox(row, flex-start, center);
   flex-wrap: wrap;
+  margin: 0 80px;
 }
