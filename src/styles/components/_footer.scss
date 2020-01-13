@@ -1,0 +1,21 @@
+.footer{
+    @include flexBox(row,center,center);
+    img{
+        max-height: 40px;
+    }
+    padding: 15px;
+    margin: 30px;
+    background-color: $light-blue;
+    height: 300px;
+    width: 1000px;
+    font-family: "Quicksand";
+    text-align: center;
+}
+
+
+
+.icon{
+    font-family: "Quicksand";
+    margin: 20px;
+
+}
