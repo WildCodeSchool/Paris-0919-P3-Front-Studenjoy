@@ -6,7 +6,7 @@ $break-tablet: 1024px;
   border: 1px solid $light-blue;
   border-radius: 3px;
   width: 360px;
-  height: 540px;
+  height: 580px;
   transition: transform .3s;
   img{
     height: 240px;
@@ -34,4 +34,20 @@ $break-tablet: 1024px;
 .School__card_footer {
   @include flexBox(column, center, flex-start);
   padding: 15px;
+}
+
+.SchoolCard__button{
+  padding: 10px 20px;
+  background: $orange;
+  color: white;
+  transition: opacity 0.3s;
+  margin: 10px;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  align-self: center;
+  &:hover{
+      cursor: pointer;
+      opacity: .9;
+  }
 }
