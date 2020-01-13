@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
   state= {
     speciality: '',
     school: '',
-    city: ''
+    city: '',
   }
 
   handleChange = (e) =>{
