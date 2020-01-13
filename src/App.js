@@ -5,6 +5,7 @@ import CitiesCarousel from './components/CitiesCarousel';
 import SearchBar from './components/SearchBar';
 import HomeCarousel from './components/HomeCarousel';
 import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
 
 
 class App extends React.Component  {
@@ -16,6 +17,7 @@ class App extends React.Component  {
         <SearchBar history={this.props.history}/>
         <CitiesCarousel />
         <ContactForm />
+        <Footer />
       </>
     );
   }
