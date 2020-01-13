@@ -22,6 +22,10 @@ class SearchBar extends React.Component {
 
   submitSearch = () =>{
     console.log('ville :', this.state.city, ' ecole : ', this.state.school,'specialité :', this.state.speciality);
+    this.props.history.push({
+      pathname: '/results',
+      state: { search: this.state.city }
+    })
   }
 
   render(){

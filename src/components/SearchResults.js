@@ -8,6 +8,7 @@ class SearchResults extends Component {
         <Navbar />
         <div className="SearchResults">
           <h2 className="SearchResults__title">Résultats de votre recherche:</h2>
+          <p>{this.props.location.state.search}</p>
         </div>
       </>
     )
