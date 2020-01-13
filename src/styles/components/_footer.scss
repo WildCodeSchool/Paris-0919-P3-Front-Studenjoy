@@ -10,7 +10,6 @@
 .Footer__col{
     @include flexBox(column, flex-start, flex-start);
     margin: 25px;
-    white-space: nowrap;
 }
 
 .Footer__line{
@@ -29,6 +28,11 @@
         font-size: $l-size;
         margin: 0;
         margin-right: 5px;
+        color: #009cc5;;
+        &:hover{
+            color: $orange;
+            cursor: pointer;
+        }
     }
 }
 
