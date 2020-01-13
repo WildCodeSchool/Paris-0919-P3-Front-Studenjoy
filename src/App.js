@@ -7,16 +7,18 @@ import HomeCarousel from './components/HomeCarousel';
 import ContactForm from './components/ContactForm';
 
 
-const App = () => {
-  return (
-    <>
-      <Navbar />
-      <HomeCarousel />
-      <SearchBar />
-      <CitiesCarousel />
-      <ContactForm />
-    </>
-  );
+class App extends React.Component  {
+  render() {
+    return (
+      <>
+        <Navbar />
+        <HomeCarousel />
+        <SearchBar history={this.props.history}/>
+        <CitiesCarousel />
+        <ContactForm />
+      </>
+    );
+  }
 };
 
 export default App;
