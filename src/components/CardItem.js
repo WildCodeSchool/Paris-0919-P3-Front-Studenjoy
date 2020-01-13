@@ -49,6 +49,9 @@ class CardItem extends React.Component {
                 Coût de la formation:{" "}
                 <span style={{ color: "#eb6645" }}>{this.props.city.fees}</span>
               </p>
+              <div className="SchoolCard__button">
+                S'inscrire
+              </div>
             </div>
           </div>
       </>
