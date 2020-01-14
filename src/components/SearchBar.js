@@ -5,9 +5,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 class SearchBar extends React.Component {
   state= {
-    speciality: '',
-    school: '',
-    city: '',
+    search: {
+      speciality: '',
+      school: '',
+      city: ''
+    }
   }
 
   handleChange = (e) =>{
@@ -15,13 +17,23 @@ class SearchBar extends React.Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
-  }
+    this.setState(prevState => ({
+        search: {
+          ...prevState.search,
+          [name]: value
+        }
+      })
+    )
+  };
 
   submitSearch = () =>{
-    console.log('ville :', this.state.city, ' ecole : ', this.state.school,'specialité :', this.state.speciality);
+    (this.state.search.speciality || this.state.search.school || this.state.search.city) ?
+      this.props.history.push({
+        pathname: '/results',
+        state: { search: this.state.search }
+      })
+    :
+      alert('Entrez des valeurs')
   }
 
   render(){
