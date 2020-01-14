@@ -92,12 +92,9 @@ class SchoolCards extends Component {
           Ecoles disponibles à {this.props.match.params.city}
         </div>
         <div className="SchoolCards__container">
-          {fakeCities.map(city => {
-            if (city.name === this.props.match.params.city)
-              return (
-                  <CardItem city={city} />
-              )
-          })}
+          {fakeCities.map(city => 
+            city.name === this.props.match.params.city && <CardItem city={city} />
+          )}
         </div>
       </>
     );

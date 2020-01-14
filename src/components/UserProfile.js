@@ -3,7 +3,6 @@ import Logo from '../images/LogoStudenjoy.png';
 
 import Navbar from './Navbar';
 
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,13 +13,7 @@ class UserProfile extends React.Component {
     lastName: 'Doe',
     mail: 'john.doe@gmail.com',
     birthDate: '30/10/1995',
-  }
-
-  editionMode = () =>{
-    this.setState({
-      editStatus: true
-    })
-    console.log(this.state.editStatus)
+    files: [],
   }
 
   handleChange = (e) =>{
@@ -32,6 +25,14 @@ class UserProfile extends React.Component {
       [name]: value,
       editing: true,
     });
+  }
+
+  handleFilesChange = (e) => {
+    const newFiles = [...this.state.files, ...e.target.files]
+    this.setState({
+      files: newFiles,
+      editing: true,
+    })
   }
 
 
@@ -70,15 +71,23 @@ class UserProfile extends React.Component {
           <h2 className="UserProfile__subtitle">Documents administratifs</h2>
           {/*  LOOP THROUGH USER DOC_ADMINS + SORT BY TYPE*/}
           <div className="UserProfile__docs_container">
-            <ul>
-              <li>
-                <span className="UserProfile__doc_type">Doc type</span> doc_name
-              </li>
+            <ul> 
+            {this.state.files && this.state.files.map(file => 
+                <li key={file.id}>
+                  <span className="UserProfile__doc_type">Doc type</span> {file.name}
+                </li>
+            )}
             </ul>
-            <div className="UserProfile__doc_upload">
-              upload here
+            <div className="UserProfile__docs_upload">
+              <span>CV</span>
+              <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+            </div>
+            <div className="UserProfile__docs_upload">
+              <span>Carte d'identité</span>
+              <input type="file" name="Carte d'identité" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
             </div>
           </div>
+
           {this.state.editing && <div className="UserProfile__update_bar">
             <div className="UserProfile__button"><FontAwesomeIcon icon={faEdit} />Mettre à jour mon profil</div>
           </div>}
