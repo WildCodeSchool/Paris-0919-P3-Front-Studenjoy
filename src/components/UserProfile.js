@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
+import Upload from './Upload';
+
 
 class UserProfile extends React.Component {
   state = {
@@ -33,8 +35,7 @@ class UserProfile extends React.Component {
       editing: true,
     });
   }
-
-
+ 
   render() {
     return (
       <>
@@ -76,7 +77,7 @@ class UserProfile extends React.Component {
               </li>
             </ul>
             <div className="UserProfile__doc_upload">
-              upload here
+              <Upload/>
             </div>
           </div>
           {this.state.editing && <div className="UserProfile__update_bar">
@@ -84,6 +85,7 @@ class UserProfile extends React.Component {
           </div>}
         </div>
       </div>
+      
       </>
     )
   }
