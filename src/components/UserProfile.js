@@ -14,6 +14,8 @@ class UserProfile extends React.Component {
     mail: 'john.doe@gmail.com',
     birthDate: '30/10/1995',
     files: [],
+    profilePicture: undefined,
+    editPicture: false,
   }
 
   handleChange = (e) =>{
@@ -37,6 +39,20 @@ class UserProfile extends React.Component {
     console.log(docType);
   }
 
+  handleProfilePictureEdit = () => {
+    this.setState({
+      editPicture: true,
+    })
+  }
+
+  handleProfilePicture = (e) => {
+    const profilePictureObj = URL.createObjectURL(e.target.files[0])
+    this.setState({
+      profilePicture: profilePictureObj,
+      editPicture: false,
+    })
+  }
+
   componentDidUpdate = () =>{
     console.log(this.state)
   }
@@ -48,7 +64,10 @@ class UserProfile extends React.Component {
       <Navbar />
       <div className="UserProfile__container">
         <div className="UserProfile__header">
-          <div className="UserProfile__picture"><img src={Logo} alt="profile"/></div>
+          <div className="UserProfile__picture">
+            <img onClick={this.handleProfilePictureEdit} src={this.state.profilePicture ? this.state.profilePicture : Logo} alt="profile"/>
+          </div>
+          {this.state.editPicture && <input type="file" name="profilePicture" onChange={this.handleProfilePicture}/>}
           <div className="UserProfile__header--main_infos">
           <h1 className="UserProfile__title">Username here</h1>
             {/* <span>Profil complet <FontAwesomeIcon icon={faCheckCircle} /> </span> */}
