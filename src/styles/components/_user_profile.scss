@@ -1,5 +1,5 @@
 .UserProfile__container{
-  margin-top: 80px;
+  margin: 80px 0 150px 0;
 }
 
 .UserProfile__header{
@@ -81,17 +81,25 @@
 }
 
 .UserProfile__docs_container{
-  @include flexBox(column, center, center);
+  @include flexBox(column, flex-start, center);
   color: $blue;
 }
 
-.UserProfile__doc_upload{
+.UserProfile__docs_upload{
+  @include flexBox(row, flex-start, center);
+  width: 100%;
+  span{
+    margin-right: $m-size;
+    color: $orange;
+    font-size: $m-size;
+  }
+}
+
+.UserProfile__doc_input{
   border: 2px dashed $blue;
   border-radius: 3px;
-  margin-top: $l-size;
+  margin: $l-size 0 0 auto;
   width: 500px;
-  height: 300px;
-  @include flexBox(row,center,center);
   text-decoration: underline;
   transition: text-decoration .5s;
   &:hover{
