@@ -41,7 +41,7 @@ class UserProfile extends React.Component {
 
   handleProfilePictureEdit = () => {
     this.setState({
-      editPicture: true,
+      editPicture: !this.state.editPicture,
     })
   }
 
@@ -50,6 +50,7 @@ class UserProfile extends React.Component {
     this.setState({
       profilePicture: profilePictureObj,
       editPicture: false,
+      editing: true,
     })
   }
 
