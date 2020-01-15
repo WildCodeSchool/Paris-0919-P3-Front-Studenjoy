@@ -3,7 +3,7 @@
 }
 
 .UserProfile__header{
-  @include flexBox(row, center, center);
+  @include flexBox(column, center, center);
   padding: 25px 80px;
   color: $orange;
   background: $light-blue;
@@ -138,8 +138,22 @@
   }
 
   .UserProfile__picture{
-    display: none;
+    img{
+      height: 50px;
+      width: 50px
+    }
   }
 
+  .UserProfile__docs_upload{
+    flex-direction: column;
+    span{
+      align-self: flex-start;
+      margin-bottom: $s-size;
+    }
+  }
 
+  .UserProfile__doc_input{
+    width: 200px;
+    margin: 0 0 $s-size 0;
+  }
 }

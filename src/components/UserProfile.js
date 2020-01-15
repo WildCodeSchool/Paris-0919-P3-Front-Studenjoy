@@ -28,11 +28,17 @@ class UserProfile extends React.Component {
   }
 
   handleFilesChange = (e) => {
+    const docType = e.target.name
     const newFiles = [...this.state.files, ...e.target.files]
     this.setState({
       files: newFiles,
       editing: true,
     })
+    console.log(docType);
+  }
+
+  componentDidUpdate = () =>{
+    console.log(this.state)
   }
 
 
@@ -83,8 +89,12 @@ class UserProfile extends React.Component {
               <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
             </div>
             <div className="UserProfile__docs_upload">
-              <span>Carte d'identité</span>
-              <input type="file" name="Carte d'identité" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <span>Lettre de motivation</span>
+              <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+            </div>
+            <div className="UserProfile__docs_upload">
+              <span>Carte d'identité / Passeport</span>
+              <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
             </div>
           </div>
 
