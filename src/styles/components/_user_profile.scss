@@ -3,7 +3,7 @@
 }
 
 .UserProfile__header{
-  @include flexBox(row, center, center);
+  @include flexBox(column, center, center);
   padding: 25px 80px;
   color: $orange;
   background: $light-blue;
@@ -13,10 +13,15 @@
   padding: 15px;
   border: 2px solid $blue;
   border-radius: 3px;
+  margin-bottom: $s-size;
   img{
     height: 200px;
     width: 200px;
-    object-fit: contain;
+    object-fit: cover;
+  }
+  &:hover{
+    cursor: pointer;
+    opacity: .8;
   }
 }
 
@@ -137,9 +142,16 @@
     align-items: center;
   }
 
-  .UserProfile__picture{
-    display: none;
+  .UserProfile__docs_upload{
+    flex-direction: column;
+    span{
+      align-self: flex-start;
+      margin-bottom: $s-size;
+    }
   }
 
-
+  .UserProfile__doc_input{
+    width: 200px;
+    margin: 0 0 $s-size 0;
+  }
 }
