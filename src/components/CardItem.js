@@ -9,42 +9,42 @@ class CardItem extends React.Component {
     return (
       <>
           <div className="School__card">
-            <h3 class="School__card_title">Etudier à {this.props.city.schoolName}</h3>
-            {this.props.city.img && (
+            <h3 class="School__card_title">Etudier à {this.props.school.schoolName}</h3>
+            {this.props.school.img && (
               <img
-                className="City__card_img"
-                src={this.props.city.img}
-                alt={this.props.city.name}
+                className="school__card_img"
+                src={this.props.school.img}
+                alt={this.props.school.name}
               />
             )}
             <div className="School__card_footer">
               <p className="SchoolCard__line">Ecole disponible </p>
               <p className="SchoolCard__line">
-                pays : <span style={{ color: "#eb6645" }}>{this.props.city.pays}</span>
+                pays : <span style={{ color: "#eb6645" }}>{this.props.school.pays}</span>
               </p>
               <p className="SchoolCard__line">
                 Nombre de places disponibles :{" "}
-                <span style={{ color: "#eb6645" }}>{this.props.city.places}</span>
+                <span style={{ color: "#eb6645" }}>{this.props.school.places}</span>
               </p>
               <p className="SchoolCard__line">
                 Spécialité(s):{" "}
                 <span style={{ color: "#eb6645" }}>
-                  {this.props.city.specialities}
+                  {this.props.school.specialities}
                 </span>{" "}
               </p>
               <p className="SchoolCard__line">Cout de la candidature avant admissibilité :</p>
               <p className="SchoolCard__line">
                 Via Studenjoy :{" "}
-                <span style={{ color: "#eb6645" }}>{this.props.city.studenjoy}</span>
+                <span style={{ color: "#eb6645" }}>{this.props.school.studenjoy}</span>
               </p>
               <p className="SchoolCard__line">
                 Via la procédure classique :{" "}
-                <span style={{ color: "#eb6645" }}>{this.props.city.normal}</span>
+                <span style={{ color: "#eb6645" }}>{this.props.school.normal}</span>
               </p>
               <br />
               <p className="SchoolCard__line">
                 Coût de la formation:{" "}
-                <span style={{ color: "#eb6645" }}>{this.props.city.fees}</span>
+                <span style={{ color: "#eb6645" }}>{this.props.school.fees}</span>
               </p>
               <div className="SchoolCard__button">
                 S'inscrire
