@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileAlt,
   faUser,
   faGraduationCap,
   faComment
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 // import './styles/Navbar.scss';
-import LogoText from '../images/LogoStudenjoyText.png';
+import LogoText from "../images/LogoStudenjoyText.png";
 
 class Navbar extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     this.updateDimension();
-    window.addEventListener('resize', this.updateDimension);
+    window.addEventListener("resize", this.updateDimension);
   }
 
   render() {
@@ -40,8 +40,8 @@ class Navbar extends React.Component {
         <nav
           className={
             this.state.mobile
-              ? 'Navbar__nav Navbar__nav--mobile'
-              : 'Navbar__nav'
+              ? "Navbar__nav Navbar__nav--mobile"
+              : "Navbar__nav"
           }
         >
           <Link to="/" className="Navbar__logo">
@@ -56,8 +56,12 @@ class Navbar extends React.Component {
 
               {/* User connected */}
               <li className="Navbar__item">Item</li>
-              <li className="Navbar__item">Demandes</li>
-              <Link to="/user_profile" className="Navbar__item">Profil</Link>
+              <Link to="/user_dashboard" className="Navbar__item">
+                Demandes
+              </Link>
+              <Link to="/user_profile" className="Navbar__item">
+                Profil
+              </Link>
               {/* End User connected */}
             </ul>
           )}
@@ -71,10 +75,18 @@ class Navbar extends React.Component {
               {/*  End User not connected */}
 
               {/*  User connected */}
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faGraduationCap} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faFileAlt} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faComment} /></li>
-              <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li>
+              <li className="Navbar__item_mobile">
+                <FontAwesomeIcon icon={faGraduationCap} />
+              </li>
+              <li className="Navbar__item_mobile">
+                <FontAwesomeIcon icon={faFileAlt} />
+              </li>
+              <li className="Navbar__item_mobile">
+                <FontAwesomeIcon icon={faComment} />
+              </li>
+              <li className="Navbar__item_mobile">
+                <FontAwesomeIcon icon={faUser} />
+              </li>
               {/*  End User connected */}
             </ul>
           </div>

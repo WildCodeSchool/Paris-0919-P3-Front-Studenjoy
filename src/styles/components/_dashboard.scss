@@ -1,0 +1,9 @@
+.Dashboard__title {
+  margin: 10rem 0 5rem 5rem;
+  color: $blue;
+  font-size: xx-large;
+  font-weight: bolder;
+  @media screen and (max-width: $break-phone) {
+    font-size: large;
+  }
+}
