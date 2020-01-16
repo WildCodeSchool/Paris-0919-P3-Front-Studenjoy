@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../images/LogoStudenjoy.png';
 
+import fakeUsers from '../fakeData/fakeUsers';
+
 import Navbar from './Navbar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,14 +10,27 @@ import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-sv
 
 class UserProfile extends React.Component {
   state = {
-    editing: false,
-    firstName: 'John',
-    lastName: 'Doe',
-    mail: 'john.doe@gmail.com',
-    birthDate: '30/10/1995',
+    firstName: undefined,
+    lastName: undefined,
+    mail: undefined,
+    birthDate: undefined,
     files: [],
     profilePicture: undefined,
+    editing: false,
     editPicture: false,
+  }
+
+  componentDidMount = () => {
+    const userId = this.props.match.params.id
+    const userData = fakeUsers.filter(user => user.id === userId)
+    this.setState({
+      firstName: userData[0].firstName,
+      lastName: userData[0].lastName,
+      mail: userData[0].mail,
+      birthDate: userData[0].birthDate,
+      profilePicture: userData[0].profilePicture,
+      files: userData[0].docs
+    })
   }
 
   handleChange = (e) =>{
@@ -56,10 +71,6 @@ class UserProfile extends React.Component {
     })
   }
 
-  componentDidUpdate = () =>{
-    console.log(this.state)
-  }
-
 
   render() {
     return (
@@ -72,7 +83,7 @@ class UserProfile extends React.Component {
           </div>
           {this.state.editPicture && <input type="file" name="profilePicture" onChange={this.handleProfilePicture}/>}
           <div className="UserProfile__header--main_infos">
-          <h1 className="UserProfile__title">Username here</h1>
+          <h1 className="UserProfile__title">{this.state.firstName}</h1>
             {/* <span>Profil complet <FontAwesomeIcon icon={faCheckCircle} /> </span> */}
             {/* <span>Profil incomplet <FontAwesomeIcon icon={faTimesCircle} /></span> */}
           </div>
@@ -101,8 +112,8 @@ class UserProfile extends React.Component {
           <div className="UserProfile__docs_container">
             <ul> 
             {this.state.files && this.state.files.map(file => 
-                <li key={file.id}>
-                  <span className="UserProfile__doc_type">Doc type</span> {file.name}
+                <li>
+                  <span className="UserProfile__doc_type">{file.doc_type}</span> {file.doc_name}
                 </li>
             )}
             </ul>
