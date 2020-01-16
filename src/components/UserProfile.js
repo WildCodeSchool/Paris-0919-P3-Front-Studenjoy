@@ -30,13 +30,15 @@ class UserProfile extends React.Component {
   }
 
   handleFilesChange = (e) => {
+    // Ici je veux récupérer le doc_type des documents 
     const docType = e.target.name
+    // Ici je récupère les objets des files uploadés
     const newFiles = [...this.state.files, ...e.target.files]
     this.setState({
+      // Comment ajouter les doc_types ET les objets des fichiers en les associants ? Un objet dans le state ?
       files: newFiles,
       editing: true,
     })
-    console.log(docType);
   }
 
   handleProfilePictureEdit = () => {

@@ -17,7 +17,7 @@
   img{
     height: 200px;
     width: 200px;
-    object-fit: contain;
+    object-fit: cover;
   }
   &:hover{
     cursor: pointer;
@@ -140,13 +140,6 @@
   .UserProfile__header--main_infos{
     text-align: center;
     align-items: center;
-  }
-
-  .UserProfile__picture{
-    img{
-      height: 50px;
-      width: 50px
-    }
   }
 
   .UserProfile__docs_upload{
