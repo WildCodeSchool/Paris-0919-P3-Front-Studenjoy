@@ -62,7 +62,7 @@ class SearchBar extends React.Component {
               onChange={this.handleChange}
               value={this.state.city}
           />
-          <div type="submit" className="SearchForm__submit_btn" onClick={this.submitSearch}><FontAwesomeIcon icon={faSearch} /></div>
+          <div className="SearchForm__submit_btn" onClick={this.submitSearch}><FontAwesomeIcon icon={faSearch} /></div>
         </div>
       </form>
     )
