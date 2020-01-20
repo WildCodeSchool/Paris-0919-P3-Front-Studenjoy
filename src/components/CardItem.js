@@ -28,9 +28,11 @@ class CardItem extends React.Component {
               </p>
               <p className="SchoolCard__line">
                 Spécialité(s):{" "}
-                <span style={{ color: "#eb6645" }}>
-                  {this.props.school.specialities}
-                </span>{" "}
+                {this.props.school.specialities.map(speciality =>
+                  <span style={{ color: "#eb6645" }}>
+                    {speciality.name}
+                  </span>
+                )}
               </p>
               <p className="SchoolCard__line">Cout de la candidature avant admissibilité :</p>
               <p className="SchoolCard__line">
