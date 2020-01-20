@@ -1,11 +1,21 @@
-const fakeCities = [
+const fakeSchools = [
   {
     city: "Paris",
     schoolName: "School 1",
     nbSchool: 15,
     pays: "France",
     places: 10,
-    specialities: "Management de l'innovation, Management Technologique",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -18,7 +28,17 @@ const fakeCities = [
     nbSchool: 2,
     pays: "France",
     places: 10,
-    specialities: "Commerce international",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -30,7 +50,17 @@ const fakeCities = [
     nbSchool: 5,
     pays: "France",
     places: 10,
-    specialities: "Management de projet secteur aeronotique",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -43,7 +73,17 @@ const fakeCities = [
     nbSchool: 6,
     pays: "France",
     places: 10,
-    specialities: "Droits des entreprises et gestion du patrimoine",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -56,7 +96,17 @@ const fakeCities = [
     nbSchool: 8,
     pays: "France",
     places: 10,
-    specialities: "Mecanique des fluides thermodynamique",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -69,7 +119,17 @@ const fakeCities = [
     nbSchool: 8,
     pays: "France",
     places: 10,
-    specialities: "Sisi la famille",
+    specialities: [
+      {
+        name: "Management de l'innovation"
+      },
+      {
+        name: "GEstion des points de vente"
+      },
+      {
+        name: "Commerce international"
+      },
+    ],
     studenjoy: "0€",
     normal: "75€",
     fees: "12 500€",
@@ -78,4 +138,4 @@ const fakeCities = [
   }
 ];
 
-export default fakeCities;
+export default fakeSchools;
