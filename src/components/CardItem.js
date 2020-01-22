@@ -9,7 +9,7 @@ class CardItem extends React.Component {
     return (
       <>
           <div className="School__card">
-            <h3 class="School__card_title">Etudier à {this.props.school.school_name}</h3>
+            <h3 className="School__card_title">Etudier à {this.props.school.school_name}</h3>
             {this.props.school.img && (
               <img
                 className="school__card_img"

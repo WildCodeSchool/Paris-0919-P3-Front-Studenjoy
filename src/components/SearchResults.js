@@ -4,7 +4,6 @@ import axios from 'axios';
 import CardItem from './CardItem';
 import Navbar from './Navbar';
 
-import fakeSchools from '../fakeData/fakeSchools';
 
 class SearchResults extends Component {
   state = {
@@ -18,9 +17,12 @@ class SearchResults extends Component {
 
   componentDidMount = () =>{
     axios.get(`http://localhost:5000/results?speciality=${this.state.search.speciality}&school=${this.state.search.school}&city=${this.state.search.city}`)
-      .then(res => this.setState({
-        schools: res.data
-      }))
+      .then(res => 
+        res.data.length >= 1 &&
+          this.setState({
+            schools: res.data
+          })
+      )
       .catch(err => console.log(err))
   }
 
@@ -34,7 +36,7 @@ class SearchResults extends Component {
           <div className="SearchResults__results">
             {this.state.schools ?
                 this.state.schools.map(school => 
-                <CardItem school={school} />
+                <CardItem key={school.id} school={school} />
               )
               :
               <h3>Aucune école trouvée pour votre recherche.</h3>
