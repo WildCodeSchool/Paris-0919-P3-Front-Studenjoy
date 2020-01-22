@@ -38,20 +38,20 @@ class SearchBar extends React.Component {
 
   render(){
     return(
-      <div className="SearchForm__container">
+      <form className="SearchForm__container">
         <h1 className="SearchForm__title">Quel programme recherchez-vous ?</h1>
         <div className="SearchForm__form">
           <input
               name="speciality"
               className="SearchForm__input"
-              placeholder="Specialités"
+              placeholder="Specialité"
               onChange={this.handleChange}
               value={this.state.speciality} 
           />
           <input
               name="school"
               className="SearchForm__input"
-              placeholder="Ecoles, programmes"
+              placeholder="Ecoles"
               onChange={this.handleChange}
               value={this.state.school} 
           />
@@ -64,7 +64,7 @@ class SearchBar extends React.Component {
           />
           <div className="SearchForm__submit_btn" onClick={this.submitSearch}><FontAwesomeIcon icon={faSearch} /></div>
         </div>
-      </div>
+      </form>
     )
   };
 };

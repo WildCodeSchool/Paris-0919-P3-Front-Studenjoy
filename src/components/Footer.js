@@ -11,7 +11,7 @@ const Footer = () => {
                 <Link to="/" className="logo">
                     <img src={logo} alt="logo" />
                 </Link>
-                <h2> Vous accompagne !</h2>
+                <h4> Vous accompagne !</h4>
             </div>
 
             <div className="Footer__col">
