@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import CardItem from './CardItem';
 import Navbar from './Navbar';
@@ -16,8 +17,9 @@ class SearchResults extends Component {
   }
 
   componentDidMount = () =>{
-    let schoolsData = fakeSchools.filter(elm => elm.city === this.state.search.city) 
-    schoolsData.length > 0 && this.setState({ schools: schoolsData })
+    axios.get(`http://localhost:5000/results?${this.state.search.speciality}&${this.state.search.school}&${this.state.search.city}`)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -28,14 +30,14 @@ class SearchResults extends Component {
         <div className="SearchResults">
           <h2 className="SearchResults__title">Résultats de votre recherche:</h2>
           <div className="SearchResults__results">
-            {this.state.search.city && 
+            {/* {this.state.search.city && 
               this.state.schools ?
                 this.state.schools.map(school => 
                 <CardItem school={school} />
               )
               :
               <h3>Aucune école trouvée pour votre recherche.</h3>
-            }
+            } */}
           </div>
         </div>
       </>
