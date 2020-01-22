@@ -17,8 +17,10 @@ class SearchResults extends Component {
   }
 
   componentDidMount = () =>{
-    axios.get(`http://localhost:5000/results?${this.state.search.speciality}&${this.state.search.school}&${this.state.search.city}`)
-      .then(res => console.log(res.data))
+    axios.get(`http://localhost:5000/results?speciality=${this.state.search.speciality}&school=${this.state.search.school}&city=${this.state.search.city}`)
+      .then(res => this.setState({
+        schools: res.data
+      }))
       .catch(err => console.log(err))
   }
 
@@ -30,14 +32,13 @@ class SearchResults extends Component {
         <div className="SearchResults">
           <h2 className="SearchResults__title">Résultats de votre recherche:</h2>
           <div className="SearchResults__results">
-            {/* {this.state.search.city && 
-              this.state.schools ?
+            {this.state.schools ?
                 this.state.schools.map(school => 
                 <CardItem school={school} />
               )
               :
               <h3>Aucune école trouvée pour votre recherche.</h3>
-            } */}
+            }
           </div>
         </div>
       </>
