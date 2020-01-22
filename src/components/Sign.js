@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,8 +10,24 @@ import Logo from '../images/LogoStudenjoy.png';
 
 class Sign extends Component {
   state = {
-    signIn: true
+    signIn: true,
+    firstName: undefined,
+    lastName: undefined,
+    mail: undefined,
+    password: undefined,
+    date_of_birth: undefined,
+    phone: undefined,
   };
+
+  handleChange = (e) =>{
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  }
 
   componentDidMount(){
     const connexionParam = this.props.match.params.connexion;
@@ -24,6 +41,32 @@ class Sign extends Component {
     })
   }
 
+  handleSignIn = (e) => {
+    e.preventDefault();
+    // Fill user object with state
+    const user = {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      email: this.state.mail,
+      student_password: this.state.password,
+      date_of_birth: this.state.date_of_birth,
+      phone: this.state.phone,
+    };
+    // Validate that all inputs are filled
+    user.first_name && user.last_name && user.email && user.date_of_birth && user.student_password && user.phone 
+    ?
+      // Post data to database
+      axios.post('http://localhost:5000/students', user)
+        .then(res => console.log(user))
+        .catch(err => console.log(err))
+        .then(() => this.props.history.push({
+          pathname: '/',
+        }))
+    :
+      alert('Please fill all the inputs')
+  }
+
+
   render() {
     return (
       <>
@@ -35,33 +78,67 @@ class Sign extends Component {
           </h1>
           <form>
             {this.state.signIn && (
-              <input
-                className="Sign__input"
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-              />
-            )}
-            {this.state.signIn && (
-              <input
-                className="Sign__input"
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-              />
+              <>
+                <input
+                  className="Sign__input"
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={this.state.firstName}
+                  onChange={this.handleChange}
+                  required
+                />
+                <input
+                  className="Sign__input"
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={this.state.lastName}
+                  onChange={this.handleChange}
+                  required
+                />
+              </>
             )}
             <input
               className="Sign__input"
               type="mail"
               name="mail"
               placeholder="Mail"
+              value={this.state.mail}
+              onChange={this.handleChange}
+              required
             />
             <input
               className="Sign__input"
               type="password"
               name="password"
               placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              required
             />
+            {this.state.signIn && (
+              <>
+                <input
+                  className="Sign__input"
+                  type="date"
+                  name="date_of_birth"
+                  placeholder="Birth date"
+                  value={this.state.date_of_birth}
+                  onChange={this.handleChange}
+                  required
+                />
+                <input
+                  className="Sign__input"
+                  type="text"
+                  name="phone"
+                  placeholder="Phone"
+                  value={this.state.phone}
+                  onChange={this.handleChange}
+                  required
+                />
+              </>
+            )}
             {!this.state.signIn && (
               <div className="Sign__checkbox">
                 <input type="checkbox" name="rememberMe" />
@@ -73,6 +150,7 @@ class Sign extends Component {
                 className="Sign__button"
                 type="submit"
                 value="S'inscrire"
+                onClick={this.handleSignIn}
               />
             ) : (
               <input
