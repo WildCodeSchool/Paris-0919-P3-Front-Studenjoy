@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
   submitSearch = () =>{
     (this.state.search.speciality || this.state.search.school || this.state.search.city) ?
       this.props.history.push({
-        pathname: '/results',
+        pathname: `/results`,
         state: { search: this.state.search }
       })
     :
