@@ -1,7 +1,4 @@
-
 import React from 'react';
-
-import fakeCities from '../fakeData/fakeCities';
 
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
@@ -43,16 +40,24 @@ const sliderSettings = {
 };
 
 
-const CitiesCarousel = () => {
-  return (
-    <section className="Cities" id="Cities">
-      <Slider {...sliderSettings} className="Cities__container">
-          {fakeCities.map(city => 
-            <Link key={city.id} to={`/schools/${city.name}`}><CityItem  city={city}/></Link>
-          )}
-      </Slider>
-    </section>
-  );
+class CitiesCarousel extends React.Component {
+  state = {
+    cities: undefined,
+  }
+  render() {
+    return (
+      <section className="Cities" id="Cities">
+        <Slider {...sliderSettings} className="Cities__container">
+            {this.state.cities && 
+            this.state.cities.map(city => 
+              <Link key={city.id} to={`/schools/${city.name}`}>
+                <CityItem  city={city}/>
+              </Link>
+            )}
+        </Slider>
+      </section>
+    );
+  }
 };
 
 export default CitiesCarousel;
