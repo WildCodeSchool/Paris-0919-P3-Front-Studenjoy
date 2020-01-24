@@ -7,7 +7,7 @@ const CityItem = props => {
   return (
     <div>
       <div className="City__card">
-        <h3 className="City__card_title">Etudier à {props.city.name}</h3>
+        <h3 className="City__card_title">Etudier à {props.city.school_name}</h3>
         {props.city.img && (
           <img
             className="City__card_img"
