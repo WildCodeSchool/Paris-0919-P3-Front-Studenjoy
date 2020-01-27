@@ -19,7 +19,7 @@ const CityItem = props => {
           <p>Ecoles disponibles </p>
           <p className="City__card_number">
             <FontAwesomeIcon className="City__card_icon" icon={faSchool} />{" "}
-            {props.city.nbSchool}
+            {props.numSchools}
           </p>
         </div>
       </div>
