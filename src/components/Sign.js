@@ -56,12 +56,15 @@ class Sign extends Component {
     user.first_name && user.last_name && user.email && user.date_of_birth && user.student_password && user.phone 
     ?
       // Post data to database
-      axios.post('http://localhost:5000/students', user)
-        .then(res => console.log(user))
+      axios.post('http://localhost:5000/signup', user)
+        .then(res => res.data.token &&
+          localStorage.setItem('token', res.data.token)
+        )
         .catch(err => console.log(err))
         .then(() => this.props.history.push({
           pathname: '/',
         }))
+        .then(() => console.log(user))
     :
       alert('Please fill all the inputs')
   }
@@ -77,7 +80,7 @@ class Sign extends Component {
     user.email && user.student_password
     ?
       // Post data to database
-      axios.post('http://localhost:5000/students', user)
+      axios.post('http://localhost:5000/signin', user)
         .then(res => console.log(res))
         .catch(err => console.log(err))
         .then(() => this.props.history.push({

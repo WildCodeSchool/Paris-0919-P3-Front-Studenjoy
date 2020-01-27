@@ -1,4 +1,5 @@
 import React from 'react';
+import decode from 'jwt-decode';
 import Logo from '../images/LogoStudenjoy.png';
 
 import fakeUsers from '../fakeData/fakeUsers';
@@ -21,7 +22,14 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount = () => {
-    const userId = this.props.match.params.id
+    const token = localStorage.getItem('token');
+    const decoded = token && decode(token);
+    console.log(decoded);
+    if (token && Date.now() >= decoded.exp * 1000) {
+      localStorage.removeItem('token');
+      console.log('Expired');
+    }
+    const userId = decoded.id
     const userData = fakeUsers.filter(user => user.id === userId)
     this.setState({
       firstName: userData[0].firstName,
