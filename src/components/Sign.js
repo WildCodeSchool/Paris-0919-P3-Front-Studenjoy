@@ -41,7 +41,7 @@ class Sign extends Component {
     })
   }
 
-  handleSignIn = (e) => {
+  handleSignInSubmit = (e) => {
     e.preventDefault();
     // Fill user object with state
     const user = {
@@ -58,6 +58,27 @@ class Sign extends Component {
       // Post data to database
       axios.post('http://localhost:5000/students', user)
         .then(res => console.log(user))
+        .catch(err => console.log(err))
+        .then(() => this.props.history.push({
+          pathname: '/',
+        }))
+    :
+      alert('Please fill all the inputs')
+  }
+
+  handleSignUpSubmit = (e) => {
+    e.preventDefault();
+    // Fill user object with state
+    const user = {
+      email: this.state.mail,
+      student_password: this.state.password,
+    };
+    // Validate that all inputs are filled
+    user.email && user.student_password
+    ?
+      // Post data to database
+      axios.post('http://localhost:5000/students', user)
+        .then(res => console.log(res))
         .catch(err => console.log(err))
         .then(() => this.props.history.push({
           pathname: '/',
@@ -142,7 +163,7 @@ class Sign extends Component {
             {!this.state.signIn && (
               <div className="Sign__checkbox">
                 <input type="checkbox" name="rememberMe" />
-                <label for="rememberMe">Se souvenir de moi</label>
+                <label htmlFor="rememberMe">Se souvenir de moi</label>
               </div>
             )}
             {this.state.signIn ? (
@@ -150,13 +171,14 @@ class Sign extends Component {
                 className="Sign__button"
                 type="submit"
                 value="S'inscrire"
-                onClick={this.handleSignIn}
+                onClick={this.handleSignInSubmit}
               />
             ) : (
               <input
                 className="Sign__button"
                 type="submit"
                 value="Se connecter"
+                onClick={this.handleSignUpSubmit}
               />
             )}
           </form>
