@@ -13,7 +13,7 @@ class SchoolCards extends Component {
   }
 
   componentDidMount = () => {
-    axios.get('http://localhost:5000/schools')
+    axios.get('http://localhost:5000/schools_specialized')
       .then(res => this.setState({
         schools: res.data.filter(school => school.city === this.props.match.params.city),
         loading: false
