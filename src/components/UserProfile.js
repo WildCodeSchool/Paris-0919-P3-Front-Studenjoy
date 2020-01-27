@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Logo from '../images/LogoStudenjoy.png';
 
 import fakeUsers from '../fakeData/fakeUsers';
@@ -15,14 +16,18 @@ class UserProfile extends React.Component {
     mail: undefined,
     birthDate: undefined,
     files: [],
+    oldFiles:[],
+    message:'',
     profilePicture: undefined,
     editing: false,
     editPicture: false,
+    userFile : []
   }
 
   componentDidMount = () => {
     const userId = this.props.match.params.id
     const userData = fakeUsers.filter(user => user.id === userId)
+    this.getUserFiles();
     this.setState({
       firstName: userData[0].firstName,
       lastName: userData[0].lastName,
@@ -56,6 +61,35 @@ class UserProfile extends React.Component {
     })
   }
 
+  sendFiles = (e) => {
+    e.preventDefault();
+    const files = this.state.files;
+    const dataToSend = new FormData();
+    for (const key of Object.keys(files)){
+      dataToSend.append('file', this.state.files[key])
+    }
+    axios.post(`http://localhost:5000/students/documents/${this.props.match.params.id}`, dataToSend)
+    .then(response => response.data)
+    .then(data => {console.log(data)})
+  }
+
+
+   getUserFiles = () => {
+     const id = 2;
+     axios
+     .get(`http://localhost:5000/students/doc/${id}`)
+     .then(response => response.data)
+     .then(data =>{ this.setState({userFile : data })})
+   }
+
+   delete = (e) => {
+    const id = e.target.value;
+    axios.delete(`http://localhost:5000/students/documents/${id}`)
+    .then(response => response.data)
+    .then(data =>{ console.log(data)})
+   }
+
+
   handleProfilePictureEdit = () => {
     this.setState({
       editPicture: !this.state.editPicture,
@@ -73,6 +107,7 @@ class UserProfile extends React.Component {
 
 
   render() {
+      console.log(this.state.userFile)
     return (
       <>
       <Navbar />
@@ -119,21 +154,44 @@ class UserProfile extends React.Component {
             </ul>
             <div className="UserProfile__docs_upload">
               <span>CV</span>
-              <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/> 
+              <button type="delete" onClick={this.deleteFiles}>delete</button>          
             </div>
             <div className="UserProfile__docs_upload">
               <span>Lettre de motivation</span>
-              <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>  
+              <button>delete</button>        
             </div>
             <div className="UserProfile__docs_upload">
               <span>Carte d'identité / Passeport</span>
-              <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>
+              <button>delete</button>          
             </div>
           </div>
+
+          <div>
+
+              <h5>Ici mes fichiers</h5>
+
+              {
+                this.state.userFile ? 
+                  this.state.userFile.map((file, i) => 
+                  
+                    <ul>
+                      <li key={i}>{file.id} <button value={file.id} onClick={this.delete}>Supprimer</button></li>
+                    </ul>
+                  ) : ''              
+              }
+            
+          </div>
+
+          <button type="submit" onClick={this.sendFiles}>Envoyer</button>
 
           {this.state.editing && <div className="UserProfile__update_bar">
             <div className="UserProfile__button"><FontAwesomeIcon icon={faEdit} />Mettre à jour mon profil</div>
           </div>}
+
+         
         </div>
       </div>
       </>
