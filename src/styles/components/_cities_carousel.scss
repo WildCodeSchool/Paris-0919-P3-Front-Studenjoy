@@ -16,7 +16,7 @@
   img{
     height: 240px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -25,11 +25,6 @@
   top: 25px;
   left: 25px;
   color: $orange;
-}
-
-.City__card_img{
-  max-width: 100%;
-  filter: grayscale(20%);
 }
 
 .City__card_icon{
