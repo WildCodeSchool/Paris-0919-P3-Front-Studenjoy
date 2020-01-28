@@ -1,8 +1,7 @@
 import React from 'react';
 import decode from 'jwt-decode';
+import axios from 'axios';
 import Logo from '../images/LogoStudenjoy.png';
-
-import fakeUsers from '../fakeData/fakeUsers';
 
 import Navbar from './Navbar';
 
@@ -23,22 +22,24 @@ class UserProfile extends React.Component {
 
   componentDidMount = () => {
     const token = localStorage.getItem('token');
-    const decoded = token && decode(token);
-    console.log(decoded);
-    if (token && Date.now() >= decoded.exp * 1000) {
-      localStorage.removeItem('token');
-      console.log('Expired');
+    if (token) {
+      const decoded = decode(token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      if (Date.now() >= decoded.exp * 1000) {
+          localStorage.removeItem('token');
+          console.log(' Token expired');
+      } else {
+          axios.get(`http://localhost:5000/students/`)
+            .then(res => this.setState({
+              firstName: res.data[0].first_name,
+              lastName: res.data[0].last_name,
+              mail: res.data[0].email,
+              birthDate: res.data[0].date_of_birth,
+            }))
+            .catch(err => console.log(err))
+            
+      }
     }
-    const userId = decoded.id
-    const userData = fakeUsers.filter(user => user.id === userId)
-    this.setState({
-      firstName: userData[0].firstName,
-      lastName: userData[0].lastName,
-      mail: userData[0].mail,
-      birthDate: userData[0].birthDate,
-      profilePicture: userData[0].profilePicture,
-      files: userData[0].docs
-    })
   }
 
   handleChange = (e) =>{
@@ -112,7 +113,7 @@ class UserProfile extends React.Component {
           </div>
           <div className="UserProfile__info">
             <span>Date de naissance</span>
-            <input type="text" name="birthDate" value={this.state.birthDate} onChange={this.handleChange}/>          
+            <input type="date" name="birthDate" value={this.state.birthDate} onChange={this.handleChange}/>          
           </div>
 
           <h2 className="UserProfile__subtitle">Documents administratifs</h2>
