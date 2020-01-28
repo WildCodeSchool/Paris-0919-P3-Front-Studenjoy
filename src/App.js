@@ -28,7 +28,7 @@ class App extends React.Component  {
           draggable={false}
           pauseOnHover
         />
-        <Navbar />
+        <Navbar history={this.props.history}/>
         <HomeCarousel />
         <SearchBar history={this.props.history}/>
         <CitiesCarousel />

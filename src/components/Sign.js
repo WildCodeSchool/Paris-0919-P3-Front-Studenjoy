@@ -91,6 +91,7 @@ class Sign extends Component {
         .then(() => this.props.history.push({
           pathname: '/',
         }))
+        .then(() => this.notify('Bon retour parmi nous !'))
     :
       alert('Please fill all the inputs')
   }
