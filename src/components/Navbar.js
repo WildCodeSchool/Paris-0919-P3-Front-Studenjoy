@@ -18,6 +18,7 @@ class Navbar extends React.Component {
     width: window.innerWidth,
     mobile: false,
     connected: false,
+    userId: undefined
   };
 
   updateDimension = () => {
@@ -38,7 +39,8 @@ class Navbar extends React.Component {
       localStorage.removeItem('token');
     }
     (token && decoded.id) && (this.setState({
-      connected: true
+      connected: true,
+      userId: decoded.id
     }))
 
     // Conditionnal styling
@@ -63,14 +65,14 @@ class Navbar extends React.Component {
             <ul className="Navbar__items">
               {!this.state.connected ?
                 <>
-                  <Link to='/sign/up'><li className="Navbar__button">Connexion</li></Link>
-                  <Link to='/sign/in'><li className="Navbar__button Navbar__button--primary">Inscription</li></Link>
+                  <Link to='/sign/in'><li className="Navbar__button">Connexion</li></Link>
+                  <Link to='/sign/up'><li className="Navbar__button Navbar__button--primary">Inscription</li></Link>
                 </>
               :
                 <>
-                  <li className="Navbar__item">Item</li>
+                  <li className="Navbar__item">Messages</li>
                   <li className="Navbar__item">Demandes</li>
-                  <Link to="/user_profile/1" className="Navbar__item">Profil</Link>
+                  <Link to={`/user_profile/${this.state.userId}`} className="Navbar__item">Profil</Link>
                 </>
               }
             </ul>
@@ -81,15 +83,15 @@ class Navbar extends React.Component {
             <ul className="Navbar__items_mobile">
               {!this.state.connected ?
               <>
-                <Link to='/sign/up'><li className="Navbar__item_mobile Navbar__item_mobile--main">Connexion</li></Link>
-                <Link to='/sign/in'><li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li></Link>
+                <Link to='/sign/in'><li className="Navbar__item_mobile Navbar__item_mobile--main">Connexion</li></Link>
+                <Link to='/sign/up'><li className="Navbar__item_mobile Navbar__item_mobile--main">Inscription</li></Link>
               </>
               :
               <>
                 <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faGraduationCap} /></li>
                 <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faFileAlt} /></li>
                 <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faComment} /></li>
-                <li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li>
+                <Link to={`/user_profile/${this.state.userId}`}><li className="Navbar__item_mobile"><FontAwesomeIcon icon={faUser} /></li></Link>
               </>
               }
             </ul>

@@ -41,7 +41,7 @@ class Sign extends Component {
     })
   }
 
-  handleSignInSubmit = (e) => {
+  handleSignUpSubmit = (e) => {
     e.preventDefault();
     // Fill user object with state
     const user = {
@@ -69,7 +69,7 @@ class Sign extends Component {
       alert('Please fill all the inputs')
   }
 
-  handleSignUpSubmit = (e) => {
+  handleSignInSubmit = (e) => {
     e.preventDefault();
     // Fill user object with state
     const user = {
@@ -97,11 +97,11 @@ class Sign extends Component {
         <Link to="/"><div className="Sign__home_link"><FontAwesomeIcon icon={faArrowLeft} /> Retour</div></Link>
         <div className="Sign__container">
           <h1 className="Sign__title">
-            {this.state.signIn ? 'Inscription' : 'Connexion'}{' '}
+            {this.state.signIn ? 'Connexion' : 'Inscription'}{' '}
             <img className="Sign__logo" src={Logo} alt="Studenjoy logo" />
           </h1>
           <form>
-            {this.state.signIn && (
+            {!this.state.signIn && (
               <>
                 <input
                   className="Sign__input"
@@ -141,7 +141,7 @@ class Sign extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.signIn && (
+            {!this.state.signIn && (
               <>
                 <input
                   className="Sign__input"
@@ -163,25 +163,25 @@ class Sign extends Component {
                 />
               </>
             )}
-            {!this.state.signIn && (
+            {this.state.signIn && (
               <div className="Sign__checkbox">
                 <input type="checkbox" name="rememberMe" />
                 <label htmlFor="rememberMe">Se souvenir de moi</label>
               </div>
             )}
-            {this.state.signIn ? (
+            {!this.state.signIn ? (
               <input
                 className="Sign__button"
                 type="submit"
                 value="S'inscrire"
-                onClick={this.handleSignInSubmit}
+                onClick={this.handleSignUpSubmit}
               />
             ) : (
               <input
                 className="Sign__button"
                 type="submit"
                 value="Se connecter"
-                onClick={this.handleSignUpSubmit}
+                onClick={this.handleSignInSubmit}
               />
             )}
           </form>
