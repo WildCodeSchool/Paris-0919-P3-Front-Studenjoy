@@ -3,11 +3,13 @@ import decode from 'jwt-decode';
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 import {
   faFileAlt,
   faUser,
   faGraduationCap,
-  faComment
+  faComment,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 // import './styles/Navbar.scss';
@@ -31,6 +33,12 @@ class Navbar extends React.Component {
       this.setState({ mobile: false });
     }
   };
+
+  handleSignOut = () => {
+    localStorage.removeItem('token');
+    this.setState({connected: false});
+    toast('Vous êtes déconnecté.')
+  }
 
   componentDidMount() {
     const token = localStorage.getItem('token');
@@ -73,6 +81,7 @@ class Navbar extends React.Component {
                   <li className="Navbar__item">Messages</li>
                   <li className="Navbar__item">Demandes</li>
                   <Link to={`/user_profile/${this.state.userId}`} className="Navbar__item">Profil</Link>
+                  <Link to="/" className="Navbar__item" onClick={this.handleSignOut}><FontAwesomeIcon icon={faSignOutAlt} /></Link>
                 </>
               }
             </ul>
