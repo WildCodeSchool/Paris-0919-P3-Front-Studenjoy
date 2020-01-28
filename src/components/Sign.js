@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 import Logo from '../images/LogoStudenjoy.png';
 
@@ -18,6 +19,8 @@ class Sign extends Component {
     date_of_birth: undefined,
     phone: undefined,
   };
+
+  notify = (message) => toast(message)
 
   handleChange = (e) =>{
     const target = e.target;
@@ -64,7 +67,7 @@ class Sign extends Component {
         .then(() => this.props.history.push({
           pathname: '/',
         }))
-        .then(() => console.log(user))
+        .then(() => this.notify('Bienvenue chez Studenjoy !'))
     :
       alert('Please fill all the inputs')
   }
