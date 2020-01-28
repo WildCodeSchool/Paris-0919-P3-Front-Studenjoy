@@ -155,17 +155,17 @@ class UserProfile extends React.Component {
             <div className="UserProfile__docs_upload">
               <span>CV</span>
               <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/> 
-              <button type="delete" onClick={this.deleteFiles}>delete</button>          
+                       
             </div>
             <div className="UserProfile__docs_upload">
               <span>Lettre de motivation</span>
               <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>  
-              <button>delete</button>        
+                 
             </div>
             <div className="UserProfile__docs_upload">
               <span>Carte d'identité / Passeport</span>
               <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>
-              <button>delete</button>          
+                       
             </div>
           </div>
 
