@@ -84,8 +84,10 @@ class Sign extends Component {
     ?
       // Post data to database
       axios.post('http://localhost:5000/signin', user)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then(res => res.data.token &&
+          localStorage.setItem('token', res.data.token)
+        )
+        .catch(err => this.notify('Une erreur est survenue.'))
         .then(() => this.props.history.push({
           pathname: '/',
         }))
