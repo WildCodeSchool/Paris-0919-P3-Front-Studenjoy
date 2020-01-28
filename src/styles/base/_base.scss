@@ -75,6 +75,16 @@ input::placeholder {
   }
 }
 
+.Toast__container{
+  border: 1px solid #009cc5;
+  border-radius: 3px !important;
+}
+
+.Toast__body{
+  color: #009cc5;
+  font-weight: bold;
+}
+
 section#Cities.Cities{
   .Cities__container{
     .slick-arrow{

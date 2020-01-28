@@ -1,17 +1,15 @@
-
 import React from 'react';
-
-import fakeCities from '../fakeData/fakeCities';
 
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import CityItem from "./CityItem";
+import axios from 'axios';
 
 const sliderSettings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 1,
   initialSlide: 1,
   centerMode: true,
@@ -43,16 +41,34 @@ const sliderSettings = {
 };
 
 
-const CitiesCarousel = () => {
-  return (
-    <section className="Cities" id="Cities">
-      <Slider {...sliderSettings} className="Cities__container">
-          {fakeCities.map(city => 
-            <Link to={`/schools/${city.name}`}><CityItem key={city.id} city={city}/></Link>
-          )}
-      </Slider>
-    </section>
-  );
+class CitiesCarousel extends React.Component {
+  state = {
+    cities: undefined,
+  }
+
+  componentDidMount = () =>{
+    axios.get("http://localhost:5000/schools")
+      .then(res => this.setState({
+        schools: res.data,
+        cities: res.data.map(city => city.city)
+      }))
+      .catch(err => console.log(err))
+    }
+
+  render() {
+    return (
+      <section className="Cities" id="Cities">
+        <Slider {...sliderSettings} className="Cities__container">
+            {this.state.schools && 
+            this.state.schools.map(school_city => 
+              <Link key={school_city.id} to={`/schools/${school_city.city}`}>
+                <CityItem city={school_city} numSchools={this.state.cities.filter(city => city === school_city.city).length}/>
+              </Link>
+            )}
+        </Slider>
+      </section>
+    );
+  }
 };
 
 export default CitiesCarousel;

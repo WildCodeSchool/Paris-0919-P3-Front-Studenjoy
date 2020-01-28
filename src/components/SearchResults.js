@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import CardItem from './CardItem';
 import Navbar from './Navbar';
 
-import fakeSchools from '../fakeData/fakeSchools';
 
 class SearchResults extends Component {
   state = {
@@ -12,12 +12,20 @@ class SearchResults extends Component {
       school: this.props.location.state.search.school,
       city: this.props.location.state.search.city,
     },
-    schools: undefined
+    schools: undefined,
+    loading: false,
   }
 
   componentDidMount = () =>{
-    let schoolsData = fakeSchools.filter(elm => elm.city === this.state.search.city) 
-    schoolsData.length > 0 && this.setState({ schools: schoolsData })
+    axios.get(`http://localhost:5000/results?speciality=${this.state.search.speciality}&school=${this.state.search.school}&city=${this.state.search.city}`)
+      .then(res => 
+        res.data.length >= 1 &&
+          this.setState({
+            schools: res.data,
+            loading: false
+          })
+      )
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -28,13 +36,13 @@ class SearchResults extends Component {
         <div className="SearchResults">
           <h2 className="SearchResults__title">Résultats de votre recherche:</h2>
           <div className="SearchResults__results">
-            {this.state.search.city && 
-              this.state.schools ?
+            {!this.state.loading &&
+              (this.state.schools ?
                 this.state.schools.map(school => 
-                <CardItem school={school} />
+                <CardItem key={school.id} school={school} />
               )
               :
-              <h3>Aucune école trouvée pour votre recherche.</h3>
+              <h3>Aucune école trouvée pour votre recherche.</h3>)
             }
           </div>
         </div>

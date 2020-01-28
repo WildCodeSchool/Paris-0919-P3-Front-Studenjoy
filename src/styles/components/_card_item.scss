@@ -2,7 +2,7 @@ $break-phone: 768px;
 $break-tablet: 1024px;
 
 .School__card {
-  margin-right: 35px;
+  margin: 35px 35px 35px 0;
   border: 1px solid $light-blue;
   border-radius: 3px;
   width: 360px;
@@ -10,7 +10,7 @@ $break-tablet: 1024px;
   img{
     height: 240px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -23,7 +23,6 @@ $break-tablet: 1024px;
 }
 
 .School__card_title {
-  white-space: nowrap;
   padding: 15px;
   top: 25px;
   left: 25px;
@@ -48,5 +47,11 @@ $break-tablet: 1024px;
   &:hover{
       cursor: pointer;
       opacity: .9;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .School__card{
+    margin: 35px 0;
   }
 }
