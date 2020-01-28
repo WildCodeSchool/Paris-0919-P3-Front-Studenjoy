@@ -1,5 +1,8 @@
 import React from 'react';
 import './styles/styles.scss';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import CitiesCarousel from './components/CitiesCarousel';
 import SearchBar from './components/SearchBar';
@@ -12,6 +15,19 @@ class App extends React.Component  {
   render() {
     return (
       <>
+        <ToastContainer
+          toastClassName="Toast__container"
+          bodyClassName="Toast__body"
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable={false}
+          pauseOnHover
+        />
         <Navbar />
         <HomeCarousel />
         <SearchBar history={this.props.history}/>
