@@ -10,7 +10,7 @@ $break-tablet: 1024px;
   img{
     height: 240px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 

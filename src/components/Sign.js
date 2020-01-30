@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 import Logo from '../images/LogoStudenjoy.png';
 
@@ -18,6 +19,8 @@ class Sign extends Component {
     date_of_birth: undefined,
     phone: undefined,
   };
+
+  notify = (message) => toast(message)
 
   handleChange = (e) =>{
     const target = e.target;
@@ -41,7 +44,7 @@ class Sign extends Component {
     })
   }
 
-  handleSignInSubmit = (e) => {
+  handleSignUpSubmit = (e) => {
     e.preventDefault();
     // Fill user object with state
     const user = {
@@ -56,17 +59,20 @@ class Sign extends Component {
     user.first_name && user.last_name && user.email && user.date_of_birth && user.student_password && user.phone 
     ?
       // Post data to database
-      axios.post('http://localhost:5000/students', user)
-        .then(res => console.log(user))
+      axios.post('http://localhost:5000/signup', user)
+        .then(res => res.data.token &&
+          localStorage.setItem('token', res.data.token)
+        )
         .catch(err => console.log(err))
         .then(() => this.props.history.push({
           pathname: '/',
         }))
+        .then(() => this.notify('Bienvenue chez Studenjoy !'))
     :
       alert('Please fill all the inputs')
   }
 
-  handleSignUpSubmit = (e) => {
+  handleSignInSubmit = (e) => {
     e.preventDefault();
     // Fill user object with state
     const user = {
@@ -77,12 +83,15 @@ class Sign extends Component {
     user.email && user.student_password
     ?
       // Post data to database
-      axios.post('http://localhost:5000/students', user)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+      axios.post('http://localhost:5000/signin', user)
+        .then(res => res.data.token &&
+          localStorage.setItem('token', res.data.token)
+        )
+        .catch(err => this.notify('Une erreur est survenue.'))
         .then(() => this.props.history.push({
           pathname: '/',
         }))
+        .then(() => this.notify('Bon retour parmi nous !'))
     :
       alert('Please fill all the inputs')
   }
@@ -94,11 +103,11 @@ class Sign extends Component {
         <Link to="/"><div className="Sign__home_link"><FontAwesomeIcon icon={faArrowLeft} /> Retour</div></Link>
         <div className="Sign__container">
           <h1 className="Sign__title">
-            {this.state.signIn ? 'Inscription' : 'Connexion'}{' '}
+            {this.state.signIn ? 'Connexion' : 'Inscription'}{' '}
             <img className="Sign__logo" src={Logo} alt="Studenjoy logo" />
           </h1>
           <form>
-            {this.state.signIn && (
+            {!this.state.signIn && (
               <>
                 <input
                   className="Sign__input"
@@ -138,7 +147,7 @@ class Sign extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.signIn && (
+            {!this.state.signIn && (
               <>
                 <input
                   className="Sign__input"
@@ -160,25 +169,25 @@ class Sign extends Component {
                 />
               </>
             )}
-            {!this.state.signIn && (
+            {this.state.signIn && (
               <div className="Sign__checkbox">
                 <input type="checkbox" name="rememberMe" />
                 <label htmlFor="rememberMe">Se souvenir de moi</label>
               </div>
             )}
-            {this.state.signIn ? (
+            {!this.state.signIn ? (
               <input
                 className="Sign__button"
                 type="submit"
                 value="S'inscrire"
-                onClick={this.handleSignInSubmit}
+                onClick={this.handleSignUpSubmit}
               />
             ) : (
               <input
                 className="Sign__button"
                 type="submit"
                 value="Se connecter"
-                onClick={this.handleSignUpSubmit}
+                onClick={this.handleSignInSubmit}
               />
             )}
           </form>

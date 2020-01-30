@@ -1,7 +1,7 @@
 import React from 'react';
+import decode from 'jwt-decode';
+import axios from 'axios';
 import Logo from '../images/LogoStudenjoy.png';
-
-import fakeUsers from '../fakeData/fakeUsers';
 
 import Navbar from './Navbar';
 
@@ -15,22 +15,33 @@ class UserProfile extends React.Component {
     mail: undefined,
     birthDate: undefined,
     files: [],
+    oldFiles:[],
+    message:'',
     profilePicture: undefined,
     editing: false,
     editPicture: false,
+    userFile : []
   }
 
   componentDidMount = () => {
-    const userId = this.props.match.params.id
-    const userData = fakeUsers.filter(user => user.id === userId)
-    this.setState({
-      firstName: userData[0].firstName,
-      lastName: userData[0].lastName,
-      mail: userData[0].mail,
-      birthDate: userData[0].birthDate,
-      profilePicture: userData[0].profilePicture,
-      files: userData[0].docs
-    })
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded = decode(token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      if (Date.now() >= decoded.exp * 1000) {
+          localStorage.removeItem('token');
+          console.log(' Token expired');
+      } else {
+          axios.get(`http://localhost:5000/students/`)
+            .then(res => this.setState({
+              firstName: res.data[0].first_name,
+              lastName: res.data[0].last_name,
+              mail: res.data[0].email,
+              birthDate: res.data[0].date_of_birth,
+            }))
+            .catch(err => console.log(err)  
+      }
+    }
   }
 
   handleChange = (e) =>{
@@ -56,6 +67,35 @@ class UserProfile extends React.Component {
     })
   }
 
+  sendFiles = (e) => {
+    e.preventDefault();
+    const files = this.state.files;
+    const dataToSend = new FormData();
+    for (const key of Object.keys(files)){
+      dataToSend.append('file', this.state.files[key])
+    }
+    axios.post(`http://localhost:5000/students/documents/${this.props.match.params.id}`, dataToSend)
+    .then(response => response.data)
+    .then(data => {console.log(data)})
+  }
+
+
+   getUserFiles = () => {
+     const id = 2;
+     axios
+     .get(`http://localhost:5000/students/doc/${id}`)
+     .then(response => response.data)
+     .then(data =>{ this.setState({userFile : data })})
+   }
+
+   delete = (e) => {
+    const id = e.target.value;
+    axios.delete(`http://localhost:5000/students/documents/${id}`)
+    .then(response => response.data)
+    .then(data =>{ console.log(data)})
+   }
+
+
   handleProfilePictureEdit = () => {
     this.setState({
       editPicture: !this.state.editPicture,
@@ -73,6 +113,7 @@ class UserProfile extends React.Component {
 
 
   render() {
+      console.log(this.state.userFile)
     return (
       <>
       <Navbar />
@@ -104,7 +145,7 @@ class UserProfile extends React.Component {
           </div>
           <div className="UserProfile__info">
             <span>Date de naissance</span>
-            <input type="text" name="birthDate" value={this.state.birthDate} onChange={this.handleChange}/>          
+            <input type="date" name="birthDate" value={this.state.birthDate} onChange={this.handleChange}/>          
           </div>
 
           <h2 className="UserProfile__subtitle">Documents administratifs</h2>
@@ -119,21 +160,44 @@ class UserProfile extends React.Component {
             </ul>
             <div className="UserProfile__docs_upload">
               <span>CV</span>
-              <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="CV" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/> 
+                       
             </div>
             <div className="UserProfile__docs_upload">
               <span>Lettre de motivation</span>
-              <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="LM" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>  
+                 
             </div>
             <div className="UserProfile__docs_upload">
               <span>Carte d'identité / Passeport</span>
-              <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>          
+              <input type="file" name="ID" multiple className="UserProfile__doc_input" onChange={this.handleFilesChange}/>
+                       
             </div>
           </div>
+
+          <div>
+
+              <h5>Ici mes fichiers</h5>
+
+              {
+                this.state.userFile ? 
+                  this.state.userFile.map((file, i) => 
+                  
+                    <ul>
+                      <li key={i}>{file.id} <button value={file.id} onClick={this.delete}>Supprimer</button></li>
+                    </ul>
+                  ) : ''              
+              }
+            
+          </div>
+
+          <button type="submit" onClick={this.sendFiles}>Envoyer</button>
 
           {this.state.editing && <div className="UserProfile__update_bar">
             <div className="UserProfile__button"><FontAwesomeIcon icon={faEdit} />Mettre à jour mon profil</div>
           </div>}
+
+         
         </div>
       </div>
       </>

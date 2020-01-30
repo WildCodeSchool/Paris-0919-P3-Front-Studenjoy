@@ -12,7 +12,8 @@ class SearchResults extends Component {
       school: this.props.location.state.search.school,
       city: this.props.location.state.search.city,
     },
-    schools: undefined
+    schools: undefined,
+    loading: false,
   }
 
   componentDidMount = () =>{
@@ -20,7 +21,8 @@ class SearchResults extends Component {
       .then(res => 
         res.data.length >= 1 &&
           this.setState({
-            schools: res.data
+            schools: res.data,
+            loading: false
           })
       )
       .catch(err => console.log(err))
@@ -34,12 +36,13 @@ class SearchResults extends Component {
         <div className="SearchResults">
           <h2 className="SearchResults__title">Résultats de votre recherche:</h2>
           <div className="SearchResults__results">
-            {this.state.schools ?
+            {!this.state.loading &&
+              (this.state.schools ?
                 this.state.schools.map(school => 
                 <CardItem key={school.id} school={school} />
               )
               :
-              <h3>Aucune école trouvée pour votre recherche.</h3>
+              <h3>Aucune école trouvée pour votre recherche.</h3>)
             }
           </div>
         </div>

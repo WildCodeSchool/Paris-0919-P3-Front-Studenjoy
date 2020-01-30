@@ -1,5 +1,7 @@
 import React from "react";
 
+import Logo from '../images/LogoStudenjoy.png'
+
 
 class CardItem extends React.Component {
 
@@ -10,27 +12,21 @@ class CardItem extends React.Component {
       <>
           <div className="School__card">
             <h3 className="School__card_title">Etudier à {this.props.school.school_name}</h3>
-            {this.props.school.img && (
               <img
                 className="school__card_img"
-                src={this.props.school.img}
+                src={this.props.school.img ? this.props.school.img : Logo}
                 alt={this.props.school.school_name}
               />
-            )}
             <div className="School__card_footer">
               <p className="SchoolCard__line">Ecole disponible </p>
               {/* <p className="SchoolCard__line">
                 Nombre de places disponibles :{" "}
                 <span style={{ color: "#eb6645" }}>{this.props.school.places}</span>
               </p> */}
-              {/* <p className="SchoolCard__line">
+              <p className="SchoolCard__line">
                 Spécialité(s):{" "}
-                {this.props.school.specialities.map(speciality =>
-                  <span style={{ color: "#eb6645" }}>
-                    {speciality.name}
-                  </span>
-                )}
-              </p> */}
+                {this.props.school.speciality_name}
+              </p>
               {/* <p className="SchoolCard__line">Cout de la candidature avant admissibilité :</p>
               <p className="SchoolCard__line">
                 Via Studenjoy :{" "}
