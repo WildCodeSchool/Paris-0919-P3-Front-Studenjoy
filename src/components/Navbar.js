@@ -79,7 +79,7 @@ class Navbar extends React.Component {
               :
                 <>
                   <li className="Navbar__item">Messages</li>
-                  <li className="Navbar__item">Demandes</li>
+                  <Link to="/dashboard" className="Navbar__item">Demandes</Link>
                   <Link to={`/user_profile/${this.state.userId}`} className="Navbar__item">Profil</Link>
                   <Link to="/" className="Navbar__item" onClick={this.handleSignOut}><FontAwesomeIcon icon={faSignOutAlt} /></Link>
                 </>
