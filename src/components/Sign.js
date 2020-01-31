@@ -87,7 +87,6 @@ class Sign extends Component {
         .then(res => res.data.token &&
           localStorage.setItem('token', res.data.token)
         )
-        .catch(err => this.notify('Une erreur est survenue.'))
         .then(() => this.props.history.push({
           pathname: '/',
         }))

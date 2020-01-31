@@ -14,8 +14,7 @@ class UserProfile extends React.Component {
     lastName: undefined,
     mail: undefined,
     birthDate: undefined,
-    files: [],
-    oldFiles:[],
+    files: [], 
     message:'',
     profilePicture: undefined,
     editing: false,
@@ -39,7 +38,7 @@ class UserProfile extends React.Component {
               mail: res.data[0].email,
               birthDate: res.data[0].date_of_birth,
             }))
-            .catch(err => console.log(err)  
+            .catch(err => console.log(err))  
       }
     }
   }
@@ -74,25 +73,27 @@ class UserProfile extends React.Component {
     for (const key of Object.keys(files)){
       dataToSend.append('file', this.state.files[key])
     }
-    axios.post(`http://localhost:5000/students/documents/${this.props.match.params.id}`, dataToSend)
-    .then(response => response.data)
-    .then(data => {console.log(data)})
+    axios.post(`http://localhost:5000/students/documents/`, dataToSend)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
   }
 
 
    getUserFiles = () => {
-     const id = 2;
-     axios
-     .get(`http://localhost:5000/students/doc/${id}`)
-     .then(response => response.data)
-     .then(data =>{ this.setState({userFile : data })})
+     axios.get(`http://localhost:5000/students/doc/`)
+      .then(res =>{ 
+        this.setState({
+          userFile : res.data 
+        })
+      })
+      .catch(err => console.log(err))
    }
 
    delete = (e) => {
     const id = e.target.value;
     axios.delete(`http://localhost:5000/students/documents/${id}`)
-    .then(response => response.data)
-    .then(data =>{ console.log(data)})
+      .then(response => console.log(response.data))
+      .catch(err => console.log(err))
    }
 
 
