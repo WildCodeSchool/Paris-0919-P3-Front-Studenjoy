@@ -61,15 +61,15 @@ class Sign extends Component {
       // Post data to database
       axios.post('http://localhost:5000/signup', user)
         .then(res => res.data.token &&
-          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('token', res.data.token),
+          this.props.history.push({
+            pathname: '/',
+          }),
+          this.notify('Bienvenue chez Studenjoy !')
         )
         .catch(err => console.log(err))
-        .then(() => this.props.history.push({
-          pathname: '/',
-        }))
-        .then(() => this.notify('Bienvenue chez Studenjoy !'))
     :
-      alert('Please fill all the inputs')
+      this.notify('Please fill all the inputs')
   }
 
   handleSignInSubmit = (e) => {

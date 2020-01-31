@@ -1,11 +1,15 @@
 import React from "react";
+import axios from 'axios';
+
 
 import Logo from '../images/LogoStudenjoy.png'
 
 
 class CardItem extends React.Component {
 
-  componentDidMount = () => window.scrollTo(0, 0);
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
 
   render(){
     return (
@@ -41,7 +45,7 @@ class CardItem extends React.Component {
                 Coût de la formation:{" "}
                 <span style={{ color: "#eb6645" }}>{this.props.school.fees}</span>
               </p> */}
-              <div className="SchoolCard__button">
+              <div onClick={this.props.handleStudentChoice} tamere="sisi" id={this.props.school.school_id} speciality_id={this.props.school.speciality_id} className="SchoolCard__button">
                 S'inscrire
               </div>
             </div>
