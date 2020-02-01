@@ -9,7 +9,7 @@ const sliderSettings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   initialSlide: 1,
   centerMode: true,
@@ -61,7 +61,7 @@ class CitiesCarousel extends React.Component {
         <Slider {...sliderSettings} className="Cities__container">
             {this.state.schools && 
             this.state.schools.map(school_city => 
-              <Link key={school_city.id} to={`/schools/${school_city.city}`}>
+              <Link key={school_city.id} to={`/schools/${school_city.id}`}>
                 <CityItem city={school_city} numSchools={this.state.cities.filter(city => city === school_city.city).length}/>
               </Link>
             )}

@@ -1,0 +1,60 @@
+.Dashboard__container{
+  margin-top: 100px;
+  padding: 0 50px;
+  svg{
+    margin: 0 15px;
+  }
+  h2 {
+    color: $blue;
+    margin: 50px 0;
+    font-size: xx-large;
+  }
+}
+
+.Dashboard__item{
+  @include flexBox(column, flex-start, flex-start);
+  color: $blue;
+  padding: 15px;
+  border: 1px solid $blue;
+  border-radius: 3px;
+  margin: 15px;
+  width: 100%;
+}
+
+.Dashboard__header{
+  @include flexBox(row, flex-start, flex-end);
+  width: 100%;
+  padding: 50px;
+  margin: 15px;
+  border: 1px solid $blue;
+  border-radius: 3px;
+  background: $light-blue;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.Dashboard__item_header{
+  @include flexBox(row, flex-start, center);
+  width: 100%;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.Dashboard__speciality{
+  margin-left: 8px;
+}
+
+.Dashboard__status{
+  color: $orange;
+  margin-left: auto;
+}
+
+.Dashboard__body{
+  display: block;
+  margin: 15px 15px 0 50px;
+  &.Dashboard__body--hidden{
+    display: none;
+  }
+}
