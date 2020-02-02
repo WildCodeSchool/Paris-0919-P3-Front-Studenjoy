@@ -1,42 +1,32 @@
-import React from 'react';
-import './styles/styles.scss';
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import HomePage from './HomePage';
+import Sign from './components/Sign';
+import UserProfile from './components/UserProfile';
+import SchoolCards from './components/SchoolCards';
+import SearchResults from './components/SearchResults';
+import Dashboard from './components/Dashboard';
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Navbar from './components/Navbar';
-import CitiesCarousel from './components/CitiesCarousel';
-import SearchBar from './components/SearchBar';
-import HomeCarousel from './components/HomeCarousel';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
-
-
-class App extends React.Component  {
+export class App extends Component {
   render() {
     return (
-      <>
-        <ToastContainer
-          toastClassName="Toast__container"
-          bodyClassName="Toast__body"
-          position="bottom-right"
-          autoClose={3000}
-          hideProgressBar
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnVisibilityChange
-          draggable={false}
-          pauseOnHover
-        />
-        <Navbar history={this.props.history}/>
-        <HomeCarousel />
-        <SearchBar history={this.props.history}/>
-        <CitiesCarousel />
-        <ContactForm />
-        <Footer />
-      </>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/sign/:connexion" component={Sign} />
+        <Route exact path="/user_profile/:id" component={UserProfile} />{' '}
+        {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
+        <Route
+          exact
+          path="/user_profile/:id/:edit"
+          component={UserProfile}
+        />{' '}
+        {/* ADD :ID VARIABLE HERE TO GET RIGHT USER */}
+        <Route path="/schools/:id" component={SchoolCards} />
+        <Route path="/results" component={SearchResults} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
     );
   }
-};
+}
 
 export default App;
