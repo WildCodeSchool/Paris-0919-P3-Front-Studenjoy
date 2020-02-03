@@ -36,7 +36,7 @@ class Dashboard extends Component {
         <Navbar />
         <div className='Dashboard__container'>
           <div className="Dashboard__header">Vous avez {this.state.applications.length} demandes en cours.</div>
-          {(this.state.isLoaded && this.state.applications.length) && 
+          {(this.state.isLoaded && this.state.applications.length >= 1) &&
             this.state.applications.map(application => <DashboardItem application={application}/>)
           }
         </div>
