@@ -1,46 +1,43 @@
-.Cities__container{
+.Cities__container {
   margin-top: 100px;
-  @include flexBox(row, center, center);
+  // @include flexBox(row, center, center);
 }
 
-.City__card{
+.City__card {
   margin: 25px;
   border: 1px solid $light-blue;
   border-radius: 3px;
   min-width: 220px;
-  transition: transform .3s;
-  &:hover{
+  transition: transform 0.3s;
+  &:hover {
     cursor: pointer;
     transform: translate(-10px, -10px);
   }
-  img{
+  img {
     height: 240px;
     width: 100%;
     object-fit: contain;
   }
 }
 
-.City__card_title{
+.City__card_title {
   padding: 15px;
   top: 25px;
   left: 25px;
   color: $orange;
 }
 
-.City__card_icon{
+.City__card_icon {
   margin-right: 10px;
 }
 
-.City__card_footer{
+.City__card_footer {
   @include flexBox(row, flex-start, center);
   padding: 0 0 0 15px;
   color: $blue;
 }
 
-.City__card_number{
+.City__card_number {
   padding: 15px;
   margin-left: auto;
 }
-
-
-
