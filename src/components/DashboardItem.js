@@ -29,6 +29,7 @@ class DashboardItem extends Component {
               <li>Mail: {this.props.application.email}</li>
               <li>Téléphone: {this.props.application.phone}</li>
             </ul>
+            <div className="Dashboard__delete_button" onClick={this.props.deleteChoice} school_id={this.props.application.school_id} speciality_id={this.props.application.speciality_id}>Supprimer cette demande</div>
           </div>
         </div>
       </>

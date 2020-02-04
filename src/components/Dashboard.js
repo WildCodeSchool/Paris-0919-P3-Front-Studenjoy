@@ -9,8 +9,8 @@ class Dashboard extends Component {
     applications: {},
     isLoaded: false,
   }
-
-  componentDidMount = () => {
+  
+  getChoices = () => {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded = decode(token);
@@ -20,14 +20,30 @@ class Dashboard extends Component {
           localStorage.removeItem('token');
           console.log(' Token expired');
       } else {
-          axios.get(`http://localhost:5000/students/application`, userId)
-            .then(res => this.setState({
-              applications: res.data,
-              isLoaded: true,
-            }))
-            .catch(err => console.log(err))  
+        axios.get(`http://localhost:5000/students/application`, userId)
+          .then(res => this.setState({
+            applications: res.data,
+            isLoaded: true,
+          }))
+          .catch(err => console.log(err)) 
       }
     }
+  }
+
+  deleteChoice = (e) => {
+    const token = localStorage.getItem('token');
+    const data = {
+      school_id: e.target.getAttribute('school_id'),
+      speciality_id: e.target.getAttribute('speciality_id'),
+    }
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.delete("http://localhost:5000/students/application", {data})
+      .then(() => this.getChoices())
+      .catch(err => console.log(err))
+  }
+
+  componentDidMount = () => {
+    this.getChoices();
   }
 
   render() {
@@ -37,7 +53,7 @@ class Dashboard extends Component {
         <div className='Dashboard__container'>
           <div className="Dashboard__header">Vous avez {this.state.applications.length} demandes en cours.</div>
           {(this.state.isLoaded && this.state.applications.length >= 1) &&
-            this.state.applications.map(application => <DashboardItem application={application}/>)
+            this.state.applications.map(application => <DashboardItem key={application.id} deleteChoice={this.deleteChoice} application={application}/>)
           }
         </div>
       </div>
