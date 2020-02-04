@@ -9,21 +9,8 @@ class Dashboard extends Component {
     applications: {},
     isLoaded: false,
   }
- 
-  deleteChoice = (e) => {
-    const token = localStorage.getItem('token');
-    const bodyData = {
-      school_id: e.target.getAttribute('school_id'),
-      speciality_id: e.target.getAttribute('speciality_id'),
-    }
-    console.log("bodyData",bodyData)
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    axios.delete("http://localhost:5000/students/application", bodyData)
-      .then(res => console.log("bodyData inside",bodyData))
-      .catch(err => console.log(err))
-  }
-
-  componentDidMount = () => {
+  
+  getChoices = () => {
     const token = localStorage.getItem('token');
     if (token) {
       const decoded = decode(token);
@@ -33,14 +20,30 @@ class Dashboard extends Component {
           localStorage.removeItem('token');
           console.log(' Token expired');
       } else {
-          axios.get(`http://localhost:5000/students/application`, userId)
-            .then(res => this.setState({
-              applications: res.data,
-              isLoaded: true,
-            }))
-            .catch(err => console.log(err))  
+        axios.get(`http://localhost:5000/students/application`, userId)
+          .then(res => this.setState({
+            applications: res.data,
+            isLoaded: true,
+          }))
+          .catch(err => console.log(err)) 
       }
     }
+  }
+
+  deleteChoice = (e) => {
+    const token = localStorage.getItem('token');
+    const data = {
+      school_id: e.target.getAttribute('school_id'),
+      speciality_id: e.target.getAttribute('speciality_id'),
+    }
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.delete("http://localhost:5000/students/application", {data})
+      .then(() => this.getChoices())
+      .catch(err => console.log(err))
+  }
+
+  componentDidMount = () => {
+    this.getChoices();
   }
 
   render() {
