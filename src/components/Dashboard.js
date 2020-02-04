@@ -9,6 +9,19 @@ class Dashboard extends Component {
     applications: {},
     isLoaded: false,
   }
+ 
+  deleteChoice = (e) => {
+    const token = localStorage.getItem('token');
+    const bodyData = {
+      school_id: e.target.getAttribute('school_id'),
+      speciality_id: e.target.getAttribute('speciality_id'),
+    }
+    console.log("bodyData",bodyData)
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.delete("http://localhost:5000/students/application", bodyData)
+      .then(res => console.log("bodyData inside",bodyData))
+      .catch(err => console.log(err))
+  }
 
   componentDidMount = () => {
     const token = localStorage.getItem('token');
@@ -37,7 +50,7 @@ class Dashboard extends Component {
         <div className='Dashboard__container'>
           <div className="Dashboard__header">Vous avez {this.state.applications.length} demandes en cours.</div>
           {(this.state.isLoaded && this.state.applications.length >= 1) &&
-            this.state.applications.map(application => <DashboardItem application={application}/>)
+            this.state.applications.map(application => <DashboardItem key={application.id} deleteChoice={this.deleteChoice} application={application}/>)
           }
         </div>
       </div>
