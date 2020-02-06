@@ -37,7 +37,7 @@ class Dashboard extends Component {
       speciality_id: e.target.getAttribute('speciality_id'),
     }
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    axios.delete("http://localhost:5000/students/application", {data})
+    axios.delete("http://localhost:5000/students/application", {data:data})
       .then(() => this.getChoices())
       .catch(err => console.log(err))
   }
