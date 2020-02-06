@@ -91,17 +91,6 @@
 .Navbar__items_mobile {
   @extend .Navbar__items;
   justify-content: space-around;
-  & a:nth-child(1) {
-    position: relative;
-    &::before{
-      content: "";
-      position: absolute; 
-      right: -30px;
-      height: 100%;
-      width: 1px;
-      background: $light-blue;
-    }
-  }
 }
 
 .Navbar__item_mobile {

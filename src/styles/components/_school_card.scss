@@ -16,3 +16,9 @@ $break-tablet: 1024px;
   flex-wrap: wrap;
   margin: 0 80px;
 }
+
+@media screen and (max-width: 500px){
+  .SchoolCards__container{
+    margin: 0;
+  }
+}

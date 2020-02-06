@@ -41,3 +41,11 @@
   padding: 15px;
   margin-left: auto;
 }
+
+@media screen and (max-width: 500px){
+  .City__card{
+    img{
+      height: 160px;
+    }
+  }
+}

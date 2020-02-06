@@ -127,12 +127,9 @@ class Navbar extends React.Component {
                 </>
               ) : (
                 <>
-                  <li className="Navbar__item_mobile">
+                  <Link to="/dashboard" className="Navbar__item_mobile">
                     <FontAwesomeIcon icon={faGraduationCap} />
-                  </li>
-                  <li className="Navbar__item_mobile">
-                    <FontAwesomeIcon icon={faFileAlt} />
-                  </li>
+                  </Link>
                   <li className="Navbar__item_mobile">
                     <FontAwesomeIcon icon={faComment} />
                   </li>

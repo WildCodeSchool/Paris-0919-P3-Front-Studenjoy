@@ -77,3 +77,43 @@
     opacity: 0.8;
   }
 }
+
+@media screen and (max-width: 500px){
+  .Dashboard__container{
+    padding: 0;
+    svg{
+      margin: 0;
+    }
+  }
+
+  .Dashboard__header{
+    margin: 0;
+  }
+
+  .Dashboard__item{
+    margin: 15px 0 0 0;
+  }
+
+  .Dashboard__item_header{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .Dashboard__speciality{
+    margin: 0;
+  }
+
+  .Dashboard__status{
+    margin: 0;
+  }
+
+  .Dashboard__body{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0 0 0;
+  }
+
+  .Dashboard__delete_button{
+    margin: 10px 0 0 0;
+  }
+}
